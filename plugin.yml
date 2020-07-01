@@ -1,0 +1,31 @@
+name: DesertsCooking
+main: me.desertdweller.desertscooking.Main
+version: 1.4.20
+author: Desertdweller
+api-version: 1.13
+commands:
+   tastes:
+      description: Shows you your preferred flavors in foods.
+      usage: /tastes
+   foodstats:
+      description: Gives you details on the food item you are holding.
+      usage: /foodstats
+permissions:
+   cooking.cuttingboard:
+      description: Lets the player use the cutting board.
+      default: op
+   cooking.cookingpot:
+      description: Lets the player use the cooking pot.
+      default: op
+   cooking.stove:
+      description: Lets the player use the stove.
+      default: op
+   cooking.oven:
+      description: Lets the player use the oven.
+      default: op
+   cooking.eat:
+      description: Lets the player eat the items.
+      default: op
+   cooking.passedtutorial:
+      description: Will limit the player to porkchop, carrot, and seeds when not given.
+      default: op

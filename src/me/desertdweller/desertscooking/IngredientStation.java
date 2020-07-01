@@ -1,0 +1,333 @@
+package me.desertdweller.desertscooking;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
+
+import net.md_5.bungee.api.ChatColor;
+
+public class IngredientStation implements Listener{
+	static ItemStack mainIngredientSlots;
+	static ItemStack secondaryIngredientSlots;
+	static ItemStack spiceSlots;
+	static ItemStack reservedSlot;
+	static ItemStack finalSlot;
+	static ItemStack air = new ItemStack(Material.AIR);
+	private static Plugin plugin = Main.getPlugin(Main.class);
+	static HashMap<Inventory, Player> openCuttingBoards = new HashMap<Inventory, Player>();
+	
+	
+	public static void openIngredientStation(Location l, Player p) {
+		Inventory inv = plugin.getServer().createInventory(null, 45, "Cutting Board");
+		
+		setItemStacks();
+		ItemStack[] contents = {reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot,
+								mainIngredientSlots, air, reservedSlot, secondaryIngredientSlots, air, air, air, reservedSlot, reservedSlot,
+								reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, finalSlot, reservedSlot,
+								spiceSlots, air, air, air, air, reservedSlot, reservedSlot, air, reservedSlot,
+								reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot, reservedSlot}; //Creates the GUI
+		inv.setContents(contents);
+		
+		p.openInventory(inv);
+		openCuttingBoards.put(inv, p);
+	}
+	
+	@EventHandler
+	private void onPlayerInventoryInteract(InventoryClickEvent e) {
+		Inventory curInv = e.getClickedInventory();
+		// If the inventory clicked is a crafting inventory.
+		if(curInv != null && openCuttingBoards.containsKey(curInv)) {
+			// Checks if it is one of the crafting slots.
+			if(e.getSlot() == 10 || e.getSlot() == 13 || e.getSlot() == 14 || e.getSlot() ==  15 || e.getSlot() == 28 || e.getSlot() == 29 || e.getSlot() == 30 || e.getSlot() == 31) {
+				if(e.getCurrentItem() != null) {
+					//If the slot clicked has an item, give it back to the player, and make the slot empty.
+					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
+					e.getClickedInventory().setItem(e.getSlot(), air);
+					curInv = updateResult(curInv);
+				}
+			//Checks to see if it is the result slot.
+			}else if(e.getSlot() == 34) {
+				if(e.getCurrentItem() != air) { //If the result slot is not empty, clear cutting board and give the result item.
+					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
+					e.getClickedInventory().setItem(34, air);
+					e.getClickedInventory().setItem(10, air);
+					e.getClickedInventory().setItem(13, air);
+					e.getClickedInventory().setItem(14, air);
+					e.getClickedInventory().setItem(15, air);
+					e.getClickedInventory().setItem(28, air);
+					e.getClickedInventory().setItem(29, air);
+					e.getClickedInventory().setItem(30, air);
+					e.getClickedInventory().setItem(31, air);
+				}
+			}
+			e.setCancelled(true);
+		}
+		// If the inventory clicked is a player inventory, and the player has cutting board open.
+		if(e.getClickedInventory() != null && e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
+			Inventory topInv = e.getWhoClicked().getOpenInventory().getTopInventory();
+			if(topInv != null && openCuttingBoards.containsKey(topInv)) {
+				CustomFoodItem foodItem = new CustomFoodItem(e.getCurrentItem());
+				//If the food item is not invalid, or already completed.
+				if(!foodItem.invalidItem && !foodItem.completed) {
+					//If the food item has any main ingredients, and the main slot is open.
+					if(foodItem.mainIngredients == 1 && topInv.getItem(10) == null) {
+						ItemStack movedItem = e.getCurrentItem().clone();
+						movedItem.setAmount(1);
+						topInv.setItem(10, movedItem);
+						e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+						topInv = updateResult(topInv);
+					//If the food item has any secondary ingredients, but not main.
+					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients > 0) {
+						//checks to see if the available slots are open.
+						if(topInv.getItem(13) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(13, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}else if(topInv.getItem(14) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(14, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}else if(topInv.getItem(15) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(15, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}
+					//Checks to see if the food item has any spices, but no secondary or main ingredients.
+					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients == 0 && foodItem.spices > 0) {
+						//Finds next open spice slot, if any.
+						if(topInv.getItem(28) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(28, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}else if(topInv.getItem(29) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(29, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}else if(topInv.getItem(30) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(30, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}else if(topInv.getItem(31) == null) {
+							ItemStack movedItem = e.getCurrentItem().clone();
+							movedItem.setAmount(1);
+							topInv.setItem(31, movedItem);
+							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
+							topInv = updateResult(topInv);
+						}
+					}else {
+						//Play Failed Sound
+					}
+				}
+				e.setCancelled(true);
+			}
+		}
+	}
+	
+	private static void setItemStacks() {
+		mainIngredientSlots = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+		ArrayList<String> lore = new ArrayList<String>();
+		lore.add(ChatColor.GRAY + "This slot is for the main");
+		lore.add(ChatColor.GRAY + "ingredient you intend to");
+		lore.add(ChatColor.GRAY + "use.");
+		lore.add(ChatColor.BOLD + "" + ChatColor.GRAY + "This is required in your");
+		lore.add(ChatColor.BOLD + "" + ChatColor.GRAY +  "final food item to be able");
+		lore.add(ChatColor.BOLD + "" + ChatColor.GRAY + "to cook it.");
+		ItemMeta temp = mainIngredientSlots.getItemMeta();
+		temp.setLore(lore);
+		temp.setDisplayName(ChatColor.RED + "Main Ingredients");
+		mainIngredientSlots.setItemMeta(temp);
+		
+		secondaryIngredientSlots = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+		lore.clear();
+		lore.add(ChatColor.GRAY + "This slot is for the secondary");
+		lore.add(ChatColor.GRAY + "ingredient you intend to use.");
+		temp = secondaryIngredientSlots.getItemMeta();
+		temp.setLore(lore);
+		temp.setDisplayName(ChatColor.RED + "Secondary Ingredients");
+		secondaryIngredientSlots.setItemMeta(temp);
+		
+		spiceSlots = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+		lore.clear();
+		lore.add(ChatColor.GRAY + "This slot is for the spices you");
+		lore.add(ChatColor.GRAY + "intend to use.");
+		temp = spiceSlots.getItemMeta();
+		temp.setLore(lore);
+		temp.setDisplayName(ChatColor.RED + "Spices");
+		spiceSlots.setItemMeta(temp);
+		
+		finalSlot = new ItemStack(Material.RED_STAINED_GLASS_PANE);
+		lore.clear();
+		lore.add(ChatColor.GRAY + "This is the item you create");
+		lore.add(ChatColor.GRAY + "from combining the ingredients.");
+		temp = finalSlot.getItemMeta();
+		temp.setLore(lore);
+		temp.setDisplayName(ChatColor.RED + "Result");
+		finalSlot.setItemMeta(temp);
+		
+		reservedSlot = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+	}
+	
+	//Check for multiblock structure.
+	public static boolean isIngredientStation(Block b) {
+		if((b.getType().equals(Material.CRAFTING_TABLE) && b.getRelative(BlockFace.UP).getType().equals(Material.OAK_PRESSURE_PLATE)) || (b.getType().equals(Material.OAK_PRESSURE_PLATE) && b.getRelative(BlockFace.DOWN).getType().equals(Material.CRAFTING_TABLE))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Inventory updateResult(Inventory inv) {
+		boolean invalidMix = false;
+		boolean allAir = true;
+		CustomFoodItem mainItem = new CustomFoodItem(Material.AIR,0,0,0,0,0,0,false, false, new Flavor(0,0,0,0,0,0));
+		for(int i = 1; i <= 8; i++) {
+			if(i == 1) {
+				if(inv.getItem(10) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(10));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 2) {
+				if(inv.getItem(13) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(13));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 3) {
+				if(inv.getItem(14) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(14));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 4) {
+				if(inv.getItem(15) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(15));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 5) {
+				if(inv.getItem(28) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(28));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 6) {
+				if(inv.getItem(29) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(29));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 7) {
+				if(inv.getItem(30) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(30));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}else if(i == 8) {
+				if(inv.getItem(31) != null) {
+					CustomFoodItem curItem = new CustomFoodItem(inv.getItem(31));
+					allAir = false;
+					if(mainItem.canCombine(curItem)) {
+						mainItem.combine(curItem);
+					}else {
+						invalidMix = true;
+					}
+				}
+			}
+		}
+		if(!invalidMix && !allAir) {
+			inv.setItem(34, mainItem.getItemStack());
+		}else {
+			inv.setItem(34, air);
+		}
+		return inv;
+	}
+	
+	private ItemStack subtractFromItemStack(ItemStack item, int number) {
+		if(item.getAmount() - number < 1) {
+			return air;
+		}else {
+			item.setAmount(item.getAmount() - number);
+			return item;
+		}
+	}
+	
+	@EventHandler
+	private void onInventoryClose(InventoryCloseEvent e) {
+		Inventory curInv = e.getInventory();
+		// If the inventory clicked is a crafting inventory.
+		if(curInv.getTitle() != null && openCuttingBoards.containsKey(curInv)) {
+			openCuttingBoards.remove(curInv);
+			HumanEntity p = e.getPlayer();
+			if(curInv.getItem(10) != null)
+				p.getInventory().addItem(curInv.getItem(10));
+			if(curInv.getItem(13) != null)
+				p.getInventory().addItem(curInv.getItem(13));
+			if(curInv.getItem(14) != null)
+				p.getInventory().addItem(curInv.getItem(14));
+			if(curInv.getItem(15) != null)
+				p.getInventory().addItem(curInv.getItem(15));
+			if(curInv.getItem(28) != null)
+				p.getInventory().addItem(curInv.getItem(28));
+			if(curInv.getItem(29) != null)
+				p.getInventory().addItem(curInv.getItem(29));
+			if(curInv.getItem(30) != null)
+				p.getInventory().addItem(curInv.getItem(30));
+			if(curInv.getItem(31) != null)
+				p.getInventory().addItem(curInv.getItem(31));
+		}
+	}
+}
