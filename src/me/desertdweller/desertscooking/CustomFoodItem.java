@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -17,7 +16,7 @@ import de.tr7zw.itemnbtapi.NBTListCompound;
 import de.tr7zw.itemnbtapi.NBTType;
 import net.md_5.bungee.api.ChatColor;
 
-public class CustomFoodItem implements Listener{
+public class CustomFoodItem{
 	private static Plugin plugin = Main.getPlugin(Main.class);
 	public int food;
 	public float saturation;
