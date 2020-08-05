@@ -75,6 +75,10 @@ public class FoodEating implements Listener{
 			if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("DesertsCooking")) {
 				CustomFoodItem item = new CustomFoodItem(usedItem);
 				if(item.completed && e.getPlayer().getFoodLevel() != 20 ) {
+					boolean mainhand = false;
+					if(e.getPlayer().getInventory().getItemInMainHand().equals(usedItem))
+						mainhand = true;
+					
 					float modifier = item.flavor.efficiency(e.getPlayer());
 					e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW,30,3));
 					e.setCancelled(true);
@@ -87,6 +91,22 @@ public class FoodEating implements Listener{
 						e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON,1200,4));
 					}
 					item.flavor.eatenPlayerMessage(e.getPlayer());
+					if(usedItem.getAmount() <= 1) {
+						ItemStack newItem = new ItemStack(Material.AIR);
+						if(mainhand) { 
+							e.getPlayer().getInventory().setItemInMainHand(newItem);
+						}else {
+							e.getPlayer().getInventory().setItemInOffHand(newItem);
+						}
+					}else {
+						if(mainhand) { 
+							usedItem.setAmount(usedItem.getAmount() - 1);
+							e.getPlayer().getInventory().setItemInMainHand(usedItem);
+						}else {
+							usedItem.setAmount(usedItem.getAmount() - 1);
+							e.getPlayer().getInventory().setItemInOffHand(usedItem);
+						}
+					}
 				}else if(!item.invalidItem && !item.completed) {
 					e.setCancelled(true);
 					e.getPlayer().sendMessage(ChatColor.GRAY + "That item is not completed! Put it into an oven, stove or boiler to finish it.");
