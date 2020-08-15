@@ -3,6 +3,7 @@ main: me.desertdweller.desertscooking.Main
 version: 1.4.23
 author: Desertdweller
 api-version: 1.16
+depend: [NBTAPI,EatingAPI]
 commands:
    tastes:
       description: Shows you your preferred flavors in foods.
