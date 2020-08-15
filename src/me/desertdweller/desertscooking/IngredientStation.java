@@ -309,7 +309,7 @@ public class IngredientStation implements Listener{
 	private void onInventoryClose(InventoryCloseEvent e) {
 		Inventory curInv = e.getInventory();
 		// If the inventory clicked is a crafting inventory.
-		if(curInv.getTitle() != null && openCuttingBoards.containsKey(curInv)) {
+		if(openCuttingBoards.containsKey(curInv)) {
 			openCuttingBoards.remove(curInv);
 			HumanEntity p = e.getPlayer();
 			if(curInv.getItem(10) != null)

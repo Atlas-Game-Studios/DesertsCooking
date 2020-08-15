@@ -10,10 +10,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-import de.tr7zw.itemnbtapi.NBTCompound;
-import de.tr7zw.itemnbtapi.NBTItem;
-import de.tr7zw.itemnbtapi.NBTListCompound;
-import de.tr7zw.itemnbtapi.NBTType;
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTListCompound;
 import net.md_5.bungee.api.ChatColor;
 
 public class CustomFoodItem{
@@ -340,7 +339,7 @@ public class CustomFoodItem{
 		NBTItem nbtHead = new NBTItem(head);
 		NBTCompound skull = nbtHead.addCompound("SkullOwner");
 		skull.setString("Id", id);
-		NBTListCompound texture = skull.addCompound("Properties").getList("textures", NBTType.NBTTagCompound).addCompound();
+		NBTListCompound texture = skull.addCompound("Properties").getCompoundList("textures").addCompound();
 		texture.setString("Value", value);
 		return nbtHead.getItem();
 	}

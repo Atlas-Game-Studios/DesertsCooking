@@ -1,6 +1,7 @@
 package me.desertdweller.desertscooking;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,8 +14,10 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.atlasmc.eatingapi.EatingAPI;
 
-import de.tr7zw.itemnbtapi.NBTItem;
-import net.md_5.bungee.api.ChatColor;
+import de.tr7zw.nbtapi.NBTItem;
+
+
+
 
 
 public class FoodEating implements Listener{

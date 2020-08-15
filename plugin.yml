@@ -1,8 +1,8 @@
 name: DesertsCooking
 main: me.desertdweller.desertscooking.Main
-version: 1.4.20
+version: 1.4.23
 author: Desertdweller
-api-version: 1.13
+api-version: 1.16
 commands:
    tastes:
       description: Shows you your preferred flavors in foods.

@@ -3,7 +3,8 @@ package me.desertdweller.desertscooking;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import de.tr7zw.itemnbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTItem;
+
 
 public class CustomItems {
 	
