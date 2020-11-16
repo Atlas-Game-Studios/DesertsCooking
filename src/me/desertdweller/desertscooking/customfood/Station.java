@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package me.desertdweller.desertscooking.customfood;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +18,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
+import me.desertdweller.desertscooking.events.FoodItemInputEvent;
+import me.desertdweller.desertscooking.events.PlayerCheckStationEvent;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -109,9 +113,7 @@ public class Station implements Listener {
 	
 	@EventHandler
 	private void onPlayerCheckStation(PlayerCheckStationEvent e) {
-		if(e.getFoodItem().prevItem.getType().equals(Material.CLOCK)) {
-			sendTimeCooking(e.getPlayer(),Long.toString(e.getTime()/60000));
-		}else if(e.getFoodItem().prevItem.getType().equals(Material.AIR) && e.getTime() > plugin.getConfig().getLong("stationTimes") && e.getTime() < plugin.getConfig().getLong("maxCookTime")){
+		if(e.getFoodItem().item.getType().equals(Material.AIR) && e.getTime() > plugin.getConfig().getLong("stationTimes") && e.getTime() < plugin.getConfig().getLong("maxCookTime")){
 			CustomFoodItem result;
 			try {
 				result = stationGrab(e.getBlock(), e.getStationType());
@@ -128,7 +130,9 @@ public class Station implements Listener {
 			} catch (SQLException exc) {
 				exc.printStackTrace();
 			}
-		}else if(e.getFoodItem().prevItem.getType().equals(Material.AIR) && e.getTime() > plugin.getConfig().getLong("maxCookTime")){
+		}else if(e.getFoodItem().item.getType().equals(Material.CLOCK)) {
+			sendTimeCooking(e.getPlayer(),Long.toString(e.getTime()/60000));
+		}else if(e.getFoodItem().item.getType().equals(Material.AIR) && e.getTime() > plugin.getConfig().getLong("maxCookTime")){
 			try {
 				stationGrab(e.getBlock(), e.getStationType());
 			} catch (SQLException exc) {

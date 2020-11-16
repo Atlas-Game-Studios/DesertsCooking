@@ -13,6 +13,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import me.desertdweller.desertscooking.customfood.Flavor;
+import me.desertdweller.desertscooking.customfood.FoodCrafting;
+import me.desertdweller.desertscooking.customfood.IngredientStation;
+import me.desertdweller.desertscooking.customfood.Station;
+import me.desertdweller.desertscooking.listeners.FoodEating;
 import net.md_5.bungee.api.ChatColor;
 
 public class Main extends JavaPlugin implements Listener{

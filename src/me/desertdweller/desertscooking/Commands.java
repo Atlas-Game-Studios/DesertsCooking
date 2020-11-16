@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import me.desertdweller.desertscooking.customfood.CustomFoodItem;
+import me.desertdweller.desertscooking.customfood.Flavor;
 import net.md_5.bungee.api.ChatColor;
 
 public class Commands implements CommandExecutor {

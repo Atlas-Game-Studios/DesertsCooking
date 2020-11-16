@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package me.desertdweller.desertscooking.customfood;
 
 
 
@@ -13,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import de.tr7zw.nbtapi.NBTCompound;
 import de.tr7zw.nbtapi.NBTItem;
 import de.tr7zw.nbtapi.NBTListCompound;
+import me.desertdweller.desertscooking.Main;
 import net.md_5.bungee.api.ChatColor;
 
 public class CustomFoodItem{
@@ -23,7 +24,7 @@ public class CustomFoodItem{
 	public int mainIngredients;
 	public int secondaryIngredients;
 	public int spices;
-	public ItemStack prevItem;
+	public ItemStack item;
 	public boolean invalidItem = true;
 	public boolean completed;
 	public boolean poisoned;
@@ -34,27 +35,29 @@ public class CustomFoodItem{
 	
 	
 	
-	public CustomFoodItem(Material newMaterial, int newFood, float newSaturation, int newExperience, int newMainIngredients, int newSecondaryIngredients, int newSpices, boolean newCompletion, boolean newPoisoned, Flavor newflavor) {
-		food = newFood;
-		saturation = newSaturation;
-		experience = newExperience;
-		mainIngredients = newMainIngredients;
-		secondaryIngredients = newSecondaryIngredients;
-		spices = newSpices;
-		invalidItem = false;
-		prevItem = new ItemStack(newMaterial);
-		completed = newCompletion;
-		poisoned = newPoisoned;
-		flavor = newflavor;
+	public CustomFoodItem(Material item, int food, float saturation, int experience, int mainIngredients, int secondaryIngredients, int spices, boolean completed, boolean poisoned, Flavor flavor) {
+		this.food = food;
+		this.saturation = saturation;
+		this.experience = experience;
+		this.mainIngredients = mainIngredients;
+		this.secondaryIngredients = secondaryIngredients;
+		this.spices = spices;
+		this.invalidItem = false;
+		this.item = new ItemStack(item);
+		this.completed = completed;
+		this.poisoned = poisoned;
+		this.flavor = flavor;
 	}
 	
 	public CustomFoodItem(ItemStack item) {
-		NBTItem nbti = new NBTItem(item);
-		prevItem = item;
+		this.item = item;
 		if(item.getType().equals(Material.AIR)) {
 			invalidItem = true;
 			flavor = new Flavor(0,0,0,0,0,0);
-		}else if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("DesertsCooking")) { //If it is part of this plugin.
+			return;
+		}
+		NBTItem nbti = new NBTItem(item);
+		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("DesertsCooking")) { //If it is part of this plugin.
 			food = nbti.getInteger("Food");
 			saturation = nbti.getFloat("Saturation");
 			experience = nbti.getInteger("Experience");
@@ -101,7 +104,7 @@ public class CustomFoodItem{
 			if(!found) {
 				if(plugin.getConfig().contains("vanillaItems")) {
 					for(String key : plugin.getConfig().getConfigurationSection("vanillaItems").getKeys(false)) {
-						if(plugin.getConfig().getString("vanillaItems." + key + ".material").equals(prevItem.getType().toString())) { //If it is a vanilla item in config
+						if(plugin.getConfig().getString("vanillaItems." + key + ".material").equals(item.getType().toString())) { //If it is a vanilla item in config
 							found = true;
 							food = (int) plugin.getConfig().getDouble("vanillaItems." + key + ".food");
 							saturation = (float) plugin.getConfig().getDouble("vanillaItems." + key + ".saturation");
@@ -125,7 +128,7 @@ public class CustomFoodItem{
 	}
 	
 	public ItemStack getItemStack() {
-		ItemStack item = prevItem;
+		ItemStack item = this.item;
 		NBTItem nbti = new NBTItem(item);
 		nbti.setString("Plugin", "DesertsCooking");
 		nbti.setInteger("Food", food);
@@ -172,7 +175,7 @@ public class CustomFoodItem{
 	}
 	
 	public NBTItem getNBTItem() {
-		ItemStack item = prevItem;
+		ItemStack item = this.item;
 		NBTItem nbti = new NBTItem(item);
 		nbti.setString("Plugin", "DesertsCooking");
 		nbti.setInteger("Food", food);
@@ -221,7 +224,7 @@ public class CustomFoodItem{
 					mainIngredients = item.mainIngredients;
 					secondaryIngredients += item.secondaryIngredients;
 					spices += item.spices;
-					prevItem = item.prevItem;
+					this.item = item.item;
 					flavor.addFlavor(item.flavor);
 					configVersion = plugin.getConfig().getString("configVersion");
 					customMaterial = item.customMaterial;
@@ -233,7 +236,7 @@ public class CustomFoodItem{
 				}
 			}else if(mainIngredients == 0 && item.mainIngredients == 1) {
 				if(customMaterial != "null" && customMaterial != null) {
-					prevItem = item.prevItem;
+					this.item = item.item;
 					food += item.food;
 					saturation += item.saturation;
 					experience += item.experience;
@@ -263,7 +266,7 @@ public class CustomFoodItem{
 					mainIngredients = item.mainIngredients;
 					secondaryIngredients += item.secondaryIngredients;
 					spices += item.spices;
-					prevItem = item.prevItem;
+					this.item = item.item;
 					flavor.addFlavor(item.flavor);
 					configVersion = plugin.getConfig().getString("configVersion");
 					customMaterial = item.customMaterial;
@@ -315,7 +318,7 @@ public class CustomFoodItem{
 			}
 			if(plugin.getConfig().getString("textures." + textureKey + ".head") == "false") {
 				newItem.customMaterial = textureKey;
-				ItemStack newStack = newItem.prevItem;
+				ItemStack newStack = newItem.item;
 				newStack.setType(Material.getMaterial(plugin.getConfig().getString("textures." + textureKey + ".material")));
 				ItemMeta meta = newStack.getItemMeta();
 				meta.setDisplayName(ChatColor.GREEN + plugin.getConfig().getString("textures." + textureKey + ".lorename"));
@@ -328,7 +331,7 @@ public class CustomFoodItem{
 				ItemMeta meta = newStack.getItemMeta();
 				meta.setDisplayName(ChatColor.GREEN + plugin.getConfig().getString("textures." + textureKey + ".lorename"));
 				newStack.setItemMeta(meta);
-				newItem.prevItem = newStack;
+				newItem.item = newStack;
 			}
 		}
 		return newItem;

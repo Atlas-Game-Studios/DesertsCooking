@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package me.desertdweller.desertscooking.customfood;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +15,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
+import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
 import net.md_5.bungee.api.ChatColor;
 
 @Deprecated
@@ -30,9 +32,9 @@ public class Boiler implements Listener {
 			if(foodItem.invalidItem) {
 				if(curBoiler.next()) {
 					long time = System.currentTimeMillis() - curBoiler.getLong(2);
-					if(foodItem.prevItem.getType().equals(Material.CLOCK)) {
+					if(foodItem.item.getType().equals(Material.CLOCK)) {
 						p.sendMessage(ChatColor.GREEN + "This boiler has been cooking for " + Long.toString(time/60000) + " minutes.");
-					}else if(foodItem.prevItem.getType().equals(Material.AIR) && time > plugin.getConfig().getLong("stationTimes")){
+					}else if(foodItem.item.getType().equals(Material.AIR) && time > plugin.getConfig().getLong("stationTimes")){
 						CustomFoodItem result = boilerGrab(b);
 						if(result != null) {
 							playTakeOutSound(p, b.getLocation());
