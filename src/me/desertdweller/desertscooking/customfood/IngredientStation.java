@@ -64,15 +64,10 @@ public class IngredientStation implements Listener{
 			}else if(e.getSlot() == 34) {
 				if(e.getCurrentItem() != air) { //If the result slot is not empty, clear cutting board and give the result item.
 					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
-					e.getClickedInventory().setItem(34, air);
-					e.getClickedInventory().setItem(10, air);
-					e.getClickedInventory().setItem(13, air);
-					e.getClickedInventory().setItem(14, air);
-					e.getClickedInventory().setItem(15, air);
-					e.getClickedInventory().setItem(28, air);
-					e.getClickedInventory().setItem(29, air);
-					e.getClickedInventory().setItem(30, air);
-					e.getClickedInventory().setItem(31, air);
+
+					resetIngredients((Player) e.getWhoClicked(), e.getClickedInventory());
+					
+					curInv = updateResult(curInv);
 				}
 			}
 			e.setCancelled(true);
@@ -80,7 +75,7 @@ public class IngredientStation implements Listener{
 		// If the inventory clicked is a player inventory, and the player has cutting board open.
 		if(e.getClickedInventory() != null && e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
 			Inventory topInv = e.getWhoClicked().getOpenInventory().getTopInventory();
-			if(topInv != null && openCuttingBoards.containsKey(topInv)) {
+			if(topInv != null && openCuttingBoards.containsKey(topInv) && e.getCurrentItem() != null) {
 				CustomFoodItem foodItem = new CustomFoodItem(e.getCurrentItem());
 				//If the food item is not invalid, or already completed.
 				if(!foodItem.invalidItem && !foodItem.completed) {
@@ -148,6 +143,44 @@ public class IngredientStation implements Listener{
 				e.setCancelled(true);
 			}
 		}
+	}
+	
+	private void resetIngredients(Player p, Inventory inv) {
+		boolean resultTrashAccountedFor = false;
+		
+		resultTrashAccountedFor = readdToBoard(p, inv, 10, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 13, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 14, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 15, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 28, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 29, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 30, resultTrashAccountedFor);
+		resultTrashAccountedFor = readdToBoard(p, inv, 31, resultTrashAccountedFor);
+	}
+	
+	private boolean readdToBoard(Player p, Inventory inv, int id, boolean resultTrashAccountedFor) {
+		ItemStack item = inv.getItem(id);
+		if(item == null)
+			return resultTrashAccountedFor;
+		ItemStack extraItem = playerHasItems(p, item);
+		if(extraItem != null) {
+			extraItem.setAmount(extraItem.getAmount() - 1);
+		}else {
+			inv.setItem(id, air);
+		}
+		
+		CustomFoodItem resultItemClear = new CustomFoodItem(new ItemStack(inv.getItem(34).getType()));
+		CustomFoodItem food = new CustomFoodItem(item);
+		
+		if(food.trashItem == null)
+			return resultTrashAccountedFor;
+		
+		if(resultItemClear.trashItem != null && resultItemClear.trashItem.equals(food.trashItem) && !resultTrashAccountedFor) {
+			return true;
+		}
+		
+		p.getInventory().addItem(food.trashItem);
+		return resultTrashAccountedFor;
 	}
 	
 	private static void setItemStacks() {
@@ -330,5 +363,21 @@ public class IngredientStation implements Listener{
 			if(curInv.getItem(31) != null)
 				p.getInventory().addItem(curInv.getItem(31));
 		}
+	}
+	
+	private ItemStack playerHasItems(Player p, ItemStack item) {
+		ItemStack compItem = item.clone();
+		compItem.setAmount(1);
+		Inventory inv = p.getInventory();
+		for(int i = 0; i < inv.getSize(); i++) {
+			if(inv.getItem(i) != null) {
+				ItemStack curItem = inv.getItem(i).clone();
+				curItem.setAmount(1);
+				if(curItem.equals(compItem)) {
+					return inv.getItem(i);
+				}
+			}
+		}
+		return null;
 	}
 }

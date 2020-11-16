@@ -1,5 +1,5 @@
 name: DesertsCooking
-main: me.desertdweller.desertscooking.Main
+main: me.desertdweller.desertscooking.Cooking
 version: 1.5.0
 author: Desertdweller
 api-version: 1.16

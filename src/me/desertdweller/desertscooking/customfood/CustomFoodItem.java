@@ -25,6 +25,7 @@ public class CustomFoodItem{
 	public int secondaryIngredients;
 	public int spices;
 	public ItemStack item;
+	public ItemStack trashItem;
 	public boolean invalidItem = true;
 	public boolean completed;
 	public boolean poisoned;
@@ -70,6 +71,8 @@ public class CustomFoodItem{
 			flavor = new Flavor(nbti.getIntArray("Flavor"));
 			customMaterial = nbti.getString("Material");
 			ingList = nbti.getString("Materials Used");
+			if(nbti.hasKey("Trash Material"))
+				trashItem = new ItemStack(Material.getMaterial(nbti.getString("Trash Material")));
 			if(nbti.hasKey("Config Version")) {
 				configVersion = nbti.getString("Config Version");
 			}else {
@@ -114,6 +117,8 @@ public class CustomFoodItem{
 							spices = Integer.parseInt(plugin.getConfig().getString("vanillaItems." + key + ".types").split("-")[2]);
 							invalidItem = false;
 							completed = false;
+							if(plugin.getConfig().getString("vanillaItems." + key + ".trashMaterial") != null)
+								trashItem = new ItemStack(Material.getMaterial(plugin.getConfig().getString("vanillaItems." + key + ".trashMaterial")));
 							customMaterial = key;
 							configVersion = plugin.getConfig().getString("configVersion");
 							if(plugin.getConfig().getString("vanillaItems." + key + ".poisoned") == "true") {
@@ -142,7 +147,8 @@ public class CustomFoodItem{
 		nbti.setString("Material", customMaterial);
 		nbti.setString("Materials Used", ingList);
 		nbti.setString("Config Version", configVersion);
-		
+		if(this.trashItem != null)
+			nbti.setString("Trash Material", this.trashItem.getType().name());
 		if(flavor != null) {
 			nbti.setIntArray("Flavor", flavor.flavorList);
 		}else {
@@ -218,13 +224,14 @@ public class CustomFoodItem{
 						}
 					}
 				}else {
+					this.item = item.item;
 					food += item.food;
 					saturation += item.saturation;
 					experience += item.experience;
 					mainIngredients = item.mainIngredients;
 					secondaryIngredients += item.secondaryIngredients;
 					spices += item.spices;
-					this.item = item.item;
+					trashItem = item.trashItem;
 					flavor.addFlavor(item.flavor);
 					configVersion = plugin.getConfig().getString("configVersion");
 					customMaterial = item.customMaterial;
@@ -244,6 +251,7 @@ public class CustomFoodItem{
 					spices += item.spices;
 					mainIngredients = 1;
 					flavor.addFlavor(item.flavor);
+					trashItem = item.trashItem;
 					configVersion = plugin.getConfig().getString("configVersion");
 					if(ingList != "") {
 						if(item.ingList != "") {
@@ -268,6 +276,7 @@ public class CustomFoodItem{
 					spices += item.spices;
 					this.item = item.item;
 					flavor.addFlavor(item.flavor);
+					trashItem = item.trashItem;
 					configVersion = plugin.getConfig().getString("configVersion");
 					customMaterial = item.customMaterial;
 					if(item.ingList != "") {

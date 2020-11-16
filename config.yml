@@ -1,848 +1,1876 @@
 #Flavors in order: Spicy, Sweet, Bitter, Savory, Salty, Sour#
 vanillaItems:
-   bread:
-      material: BREAD
-      food: 5
-      saturation: 6
-      experience: 0
-      types: 0-1-0
-      flavors: 0-2-0-1-0-0
-   rawSteak:
+   Steak:
       material: BEEF
-      food: 8
-      saturation: 12.8
-      experience: 1
+      food: 6
+      saturation: 6.9
+      experience: 9
       types: 1-0-0
-      flavors: 0-0-0-4-0-0
+      flavors: 0-1-0-6-0-0
       boilerTextures:
-         KEYS: potato,poisonousPotato,carrot,bread
-         potato: potRoast
-         poisonousPotato: potRoast
-         carrot: potRoast
-         bread: beefSandwich
+         KEYS: Potato,Poisonous Potato,Carrot,Apple,Beetroot,Pufferfish,Chorus Fruit,Clownfish,Corn,Onion,Turnip,Cabbage,Tomato,Eggplant,Daikon,Cheese
+         Potato: potRoast
+         Poisonous Potato: potRoast
+         Carrot: potRoast
+         Apple: potRoast
+         Beetroot: potRoast
+         Pufferfish: potRoast
+         Chorus Fruit: potRoast
+         Clownfish: potRoast
+         Corn: potRoast
+         Onion: potRoast
+         Turnip: potRoast
+         Cabbage: potRoast
+         Tomato: potRoast
+         Eggplant: potRoast
+         Daikon: potRoast
+         Cheese: steakNCheese
          DEFAULT: boiledSteak
       ovenTextures:
-         KEYS: potato,poisonousPotato,bread
-         potato: steakPotatoDinner
-         poisonousPotato: steakPotatoDinner
-         bread: beefSandwich
+         KEYS: Potato,Poisonous Potato,Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Cheese,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Potato: steakPotatoDinner
+         Poisonous Potato: steakPotatoDinner
+         Bread: beefSandwich
+         Apple: appleSteak
+         Melon Slice: melonSteak
+         Chorus Fruit: chorusSteak
+         Cactus: cactusSteak
+         Slime Ball: slimeySteak
+         Magma Cream: creamySteak
+         Glistening Melon: melonSteak
+         Corn: steakCornDinner
+         Cheese: cheeseSteak
+         Plum: fruitySteak
+         Coconut: tropicalSteak
+         Orange: orangeSteak
+         Pear: pearSteak
+         Beetroot: steakAndVeggies
+         Carrot: steakAndVeggies
          DEFAULT: roastedSteak
       stoveTextures:
-         KEYS: potato,poisonousPotato,bread
-         potato: steakPotatoDinner
-         poisonousPotato: steakPotatoDinner
-         bread: beefSandwich
+         KEYS: Potato,Poisonous Potato,Bread
+         Potato: steakPotatoDinner
+         Poisonous Potato: steakPotatoDinner
+         Bread: beefSandwich
          DEFAULT: grilledSteak
-   apple:
-      material: APPLE
-      food: 4
-      saturation: 2.4
-      experience: 1
-      types: 0-1-0
-      flavors: 0-3-1-0-0-0
-   potato:
-      material: POTATO
-      food: 5
-      saturation: 6
-      experience: 10
-      types: 0-1-0
-      flavors: 0-0-0-0-0-3
-   seeds:
-      material: WHEAT_SEED
-      food: 2
-      saturation: 4
-      experience: 20
-      types: 0-0-1
-      flavors: 2-2-1-0-0-0
-   spiderEye:
-      material: SPIDER_EYE
-      food: 2
-      saturation: 3.2
-      experience: 40
-      types: 0-0-1
-      flavors: 0-0-3-0-2-0
-      poisoned: true
-   beetroot:
-      material: BEETROOT
-      food: 3
-      saturation: 3.2
-      experience: 100
-      types: 0-1-0
-      flavors: 0-2-2-0-0-0
-   porkchop:
+   Porkchop: 
       material: PORKCHOP
-      food: 7
-      saturation: 5
-      experience: 30
+      food: 6
+      saturation: 6.9
+      experience: 10
       types: 1-0-0
-      flavors: 0-0-0-3-2-0
+      flavors: 0-3-1-3-0-0
       boilerTextures:
-         KEYS: bread,potato,poisonousPotato,carrot
-         bread: hamSandwich
-         potato: porkStew
-         poisonousPotato: porkStew
-         carrot: porkStew
+         KEYS: Potato,Poisonous Potato,Carrot,Apple,Beetroot,Pufferfish,Chorus Fruit,Clownfish,Corn,Onion,Turnip,Cabbage,Tomato,Eggplant,Daikon
+         Potato: porkStew
+         Poisonous Potato: porkStew
+         Carrot: porkStew
+         Apple: porkStew
+         Beetroot: porkStew
+         Pufferfish: porkStew
+         Chorus Fruit: porkStew
+         Clownfish: porkStew
+         Corn: porkStew
+         Onion: porkStew
+         Turnip: porkStew
+         Cabbage: porkStew
+         Tomato: porkStew
+         Eggplant: porkStew
+         Daikon: porkStew
          DEFAULT: boiledPork
       ovenTextures:
-         KEYS: bread
-         bread: hamSandwich
+         KEYS: Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Cheese,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: hamPie
+         Apple: applePork
+         Melon Slice: melonPork
+         Chorus Fruit: chorusPork
+         Cactus: cactusPork
+         Slime Ball: slimeyPork
+         Magma Cream: creamyPork
+         Glistening Melon: melonPork
+         Corn: porkCornDinner
+         Cheese: cheesyPork
+         Plum: fruityPork
+         Coconut: tropicalPork
+         Orange: orangePork
+         Pear: pearPork
+         Beetroot: porkAndVeggies
+         Carrot: porkAndVeggies
          DEFAULT: roastedPork
       stoveTextures:
-         KEYS: bread
-         bread: hamSandwich
+         KEYS: Bread
+         Bread: hamSandwich
          DEFAULT: grilledPork
-   goldenApple:
+   Golden Apple: 
       material: GOLDEN_APPLE
-      food: 12
-      saturation: 10
-      experience: 100
+      food: 4
+      saturation: 9.6
+      experience: 30
       types: 1-0-0
-      flavors: 0-4-0-0-0-3
+      flavors: 0-0-3-0-1-3
       boilerTextures:
-         KEYS: none
+         KEYS: Magma Cream,Apple,Potato,Poisonous Potato,Beetroot,Melon Slice,Pufferfish,Carrot,Chorus Fruit,Clownfish,Cactus,Slime Ball,Glistening Melon,Corn,Onion,Turnip,Cabbage,Eggplant,Daikon,Plum,Coconut,Orange,Pear
+         Magma Cream: creamedApple
+         Apple: applesauce
+         Potato: dirtyAppleStew
+         Poisonous Potato: dirtyAppleStew
+         Beetroot: dirtyAppleStew
+         Melon Slice: fruitSalad
+         Pufferfish: goldenFishStew
+         Carrot: dirtyAppleStew
+         Chorus Fruit: fruityFishSoup
+         Clownfish: goldenFishStew
+         Cactus: fruitSalad
+         Slime Ball: slimeyApple
+         Glistening Melon: goldenFruitSalad
+         Corn: dirtyAppleStew
+         Onion: dirtyAppleStew
+         Turnip: dirtyAppleStew
+         Cabbage: dirtyAppleStew
+         Eggplant: dirtyAppleStew
+         Daikon: dirtyAppleStew
+         Plum: dirtyAppleStew
+         Coconut: dirtyAppleStew
+         Orange: dirtyAppleStew
+         Pear: dirtyAppleStew
          DEFAULT: goldenApple
       ovenTextures:
-         KEYS: none
+         KEYS: Bread,Slime Ball,Magma Cream,Glistening Melon,Apple,Melon Slice,Chorus Fruit,Cactus,Plum,Coconut,Orange,Pear
+         Bread: goldenPie
+         Slime Ball: slimeyApple
+         Magma Cream: creamedApple
+         Glistening Melon: goldenFruitApple
+         Apple: fruitSalad
+         Melon Slice: fruitSalad
+         Chorus Fruit: fruitSalad
+         Cactus: fruitSalad
+         Plum: fruitSalad
+         Coconut: fruitSalad
+         Orange: fruitSalad
+         Pear: fruitSalad
          DEFAULT: goldenApple
       stoveTextures:
          KEYS: none
          DEFAULT: goldenApple
-   rawCod:
+   Cod: 
       material: COD
-      food: 5
-      saturation: 4
-      experience: 35
+      food: 4
+      saturation: 3
+      experience: 8
       types: 1-0-0
-      flavors: 1-0-0-1-0-0
+      flavors: 4-0-0-0-3-0
       boilerTextures:
-         KEYS: pufferFish,clownFish
-         pufferFish: fishSurprise
-         clownFish: fishSurprise
+         KEYS: Pufferfish,Clownfish,Apple,Potato,Poisonous Potato,Beetroot,Melon Slice,Carrot,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Dried Kelp,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce,Cheese,Plum,Coconut,Orange,Pear
+         Pufferfish: fishSurprise
+         Clownfish: fishSurprise
+         Apple: fruityFishSoup
+         Potato: fishNPotatoes
+         Poisonous Potato: fishNPotatoes
+         Beetroot: fishStew
+         Melon Slice: fruityFish
+         Carrot: fishStew
+         Chorus Fruit: fruityFishSoup
+         Cactus: fruityFishSoup
+         Slime Ball: slimeyFishDinner
+         Magma Cream: creamyFishSoup
+         Glistening Melon: fruityFishSoup
+         Dried Kelp: underseaSpecial
+         Corn: fishStew
+         Onion: fishStew
+         Turnip: fishStew
+         Cabbage: fishStew
+         Eggplant: fishStew
+         Lettuce: fishStew
+         Cheese: cheesyFishSoup
+         Plum: fruityFishSoup
+         Coconut: fruityFishSoup
+         Orange: fruityFishSoup
+         Pear: fruityFishSoup
          DEFAULT: boiledCod
       ovenTextures:
-         KEYS: bread,clownFish,pufferFish
-         bread: breadedFish
-         clownFish: fishSurprise
-         pufferFish: fishSurprise
+         KEYS: Bread,Clownfish,Pufferfish,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: breadedFish
+         Clownfish: fishSurprise
+         Pufferfish: fishSurprise
+         Apple: fruityFishDinner
+         Melon Slice: fruityFishDinner
+         Chorus Fruit: fruityFishDinner
+         Cactus: fruityFishDinner
+         Slime Ball: slimeyFishDinner
+         Magma Cream: creamyFish
+         Glistening Melon: fruityFishDinner
+         Corn: fishAndVeggies
+         Plum: plumFish
+         Coconut: fruityFishDinner
+         Orange: fruityFishDinner
+         Pear: fruityFishDinner
+         Beetroot: fishAndVeggies
+         Carrot: fishAndVeggies
          DEFAULT: bakedCod
       stoveTextures:
-         KEYS: clownFish,pufferFish
-         clownFish: fishSurprise
-         pufferFish: fishSurprise
-         DEFAULT: grilledSalmon
-   enchantedGoldenApple:
-      material: ENCHANTED_GOLDEN_APPLE
-      food: 16
-      saturation: 20
-      experience: 200
-      types: 1-0-0
-      flavors: 0-5-0-3-0-0
-      boilerTextures:
-         KEYS: none
-         DEFAULT: enchantedGoldenApple
-      ovenTextures:
-         KEYS: none
-         DEFAULT: enchantedGoldenApple
-      stoveTextures:
-         KEYS: none
-         DEFAULT: enchantedGoldenApple
-   Melon Slice:
-      material: MELON_SLICE
-      food: 2
-      saturation: 1
-      experience: 25
-      types: 0-1-0
-      flavors: 0-2-0-0-0-1
-   pufferFish:
-      material: PUFFERFISH
-      food: 1
-      saturation: 0.1
-      experience: 10
-      types: 0-1-0
-      flavors: 0-0-1-0-1-0
-      poisoned: true
-   rawChicken:
+         KEYS: Bread,Clownfish,Pufferfish
+         Bread: fishSandwich
+         Clownfish: fishSurprise
+         Pufferfish: fishSurprise
+         DEFAULT: grilledRabbit
+   Chicken: 
       material: CHICKEN
-      food: 2
-      saturation: 1
-      experience: 10
+      food: 5
+      saturation: 3.6
+      experience: 8
       types: 1-0-0
-      flavors: 1-0-0-4-0-0
+      flavors: 1-1-1-2-1-1
       boilerTextures:
-         KEYS: none
+         KEYS: Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Pufferfish,Plum,Coconut,Orange,Pear,Carrot,Potato,Beetroot,Clownfish,Poisonous Potato,Slime Ball,Magma Cream,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce
+         Bread: chickenAndDumplings
+         Apple: fruityChickenSoup
+         Melon Slice: fruityChickenSoup
+         Chorus Fruit: fruityChickenSoup
+         Cactus: fruityChickenSoup
+         Pufferfish: chickenNFish
+         Plum: fruityChickenSoup
+         Coconut: tropicalChickenSoup
+         Orange: fruityChickenSoup
+         Pear: fruityChickenSoup
+         Carrot: chickenSoup
+         Potatoes: chickenSoup
+         Beetroot: chickenSoup
+         Clownfish: chickenNFish
+         Poisonous Potato: chickenSoup
+         Slime Ball: slimeyChickenSoup
+         Magma Cream: creamyChickenSoup
+         Corn: chickenSoup
+         Onion: chickenSoup
+         Turnip: chickenSoup
+         Cabbage: chickenSoup
+         Eggplant: chickenSoup
+         Lettuce: chickenSoup
          DEFAULT: boiledChicken
       ovenTextures:
-         KEYS: none
+         KEYS: Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Cheese,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: breadedChicken
+         Apple: appleChicken
+         Melon Slice: melonChicken
+         Chorus Fruit: chorusChicken
+         Cactus: cactusChicken
+         Slime Ball: slimeyChicken
+         Magma Cream: creamyChicken
+         Glistening Melon: melonChicken
+         Corn: cornChicken
+         Cheese: cheesyChicken
+         Plum: fruityChicken
+         Coconut: tropicalChicken
+         Orange: orangeChicken
+         Pear: pearChicken
+         Beetroot: chickenAndVeggies
+         Carrot: chickenAndVeggies
          DEFAULT: bakedChicken
-      stoveTexures:
-         KEYS: none
+      stoveTextures:
+         KEYS: Bread
+         Bread: chickenSandwich
          DEFAULT: grilledChicken
-   rawMutton:
+   Mutton: 
       material: MUTTON
-      food: 2
-      saturation: 1
-      experience: 15
+      food: 5
+      saturation: 4.8
+      experience: 9
       types: 1-0-0
-      flavors: 0-0-0-3-2-0
+      flavors: 0-0-1-0-2-4
       boilerTextures:
-         KEYS: none
+         KEYS: Apple,Potato,Beetroot,Melon Slice,Pufferfish,Carrot,Chorus Fruit,Clownfish,Poisonous Potato,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce,Cheese,Plum,Coconut,Orange,Pear
+         Apple: fruityMuttonSoup
+         Potato: muttonRoast
+         Beetroot: muttonRoast
+         Melon Slice: fruityMuttonSoup
+         Pufferfish: muttonAndFish
+         Carrot: muttonRoast
+         Chorus Fruit: fruityMuttonSoup
+         Clownfish: muttonAndFish
+         Poisonous Potato: muttonRoast
+         Cactus: fruityMuttonSoup
+         Slime Ball: slimeyMutton
+         Magma Cream: creamyMuttonSoup
+         Glistening Melon: fruityMuttonSoup
+         Corn: muttonRoast
+         Onion: muttonRoast
+         Turnip: muttonRoast
+         Cabbage: muttonRoast
+         Eggplant: muttonRoast
+         Lettuce: muttonRoast
+         Cheese: cheesyMuttonSoup
+         Plum: fruityMuttonSoup
+         Coconut: tropicalMuttonSoup
+         Orange: fruityMuttonSoup
+         Pear: fruityMuttonSoup
          DEFAULT: boiledMutton
       ovenTextures:
-         KEYS: none
+         KEYS: Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Cheese,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: muttonPie
+         Apple: appleMutton
+         Melon Slice: melonMutton
+         Chorus Fruit: chorusMutton
+         Cactus: cactusMutton
+         Slime Ball: slimeyMutton
+         Magma Cream: creamyMutton
+         Glistening Melon: melonMutton
+         Corn: cornMutton
+         Cheese: cheesyMutton
+         Plum: fruityMutton
+         Coconut: tropicalMutton
+         Orange: orangeMutton
+         Pear: pearMutton
+         Beetroot: muttonAndVeggies
+         Carrot: muttonAndVeggies
          DEFAULT: lambChops
-      stoveTexures:
-         KEYS: none
+      stoveTextures:
+         KEYS: Bread
+         Bread: muttonSandwich
          DEFAULT: grilledMutton
-   rottenFlesh:
-      material: ROTTEN_FLESH
-      food: 4
-      saturation: 0.5
-      experience: 5
-      types: 0-0-1
-      flavors: 0-0-4-0-3-0
-   redstone:
-      material: REDSTONE
-      food: 1
-      saturation: 1
-      experience: 10
-      types: 0-0-1
-      flavors: 2-0-1-0-2-0
-   carrot:
-      material: CARROT
-      food: 3
-      saturation: 3
-      experience: 50
-      types: 0-1-0
-      flavors: 0-3-0-1-0-1
-   chorusFruit: 
-      material: CHORUS_FRUIT
-      food: 4
-      saturation: 2.2
-      experience: 40
-      types: 0-1-0
-      flavors: 2-1-1-0-1-0
-   clownFish: 
-      material: TROPICAL_FISH
-      food: 2
-      saturation: 0.4
-      experience: 20
-      types: 0-1-0
-      flavors: 0-0-4-1-0-0
-   driedKelp:
-      material: DRIED_KELP
-      food: 1
-      saturation: 0.5
-      experience: 0
-      types: 0-0-1
-      flavors: 0-0-0-0-3-3
-   goldenCarrot:
+   Golden Carrot: 
       material: GOLDEN_CARROT
-      food: 6
-      saturation: 14
-      experience: 60
+      food: 4
+      saturation: 7.2
+      experience: 25
       types: 1-0-0
-      flavors: 0-3-0-0-0-5
+      flavors: 2-2-2-0-1-0
       boilerTextures:
-         KEYS: none
+         KEYS: Potato,Poisonous Potato,Beetroot,Carrot,Magma Cream,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce
+         Potato: vegetableSoup
+         Poisonous Potato: vegetableSoup
+         Beetroot: vegetableSoup
+         Carrot: vegetableSoup
+         Magma Cream: creamyVegetableSoup
+         Corn: vegetableSoup
+         Onion: vegetableSoup
+         Turnip: vegetableSoup
+         Cabbage: vegetableSoup
+         Eggplant: vegetableSoup
+         Lettuce: vegetableSoup
          DEFAULT: goldenCarrot
       ovenTextures:
+         KEYS: Bread,Slime Ball,Magma Cream,Carrot,Beetroot,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce
+         Bread: goldenPie
+         Slime Ball: slimeyCarrot
+         Magma Cream: creamyCarrot
+         Carrot: salad
+         Beetroot: salad
+         Corn: salad
+         Onion: salad
+         Turnip: salad
+         Cabbage: salad
+         Eggplant: salad
+         Lettuce: salad
+         DEFAULT: goldenCarrot
+      stoveTextures:
          KEYS: none
          DEFAULT: goldenCarrot
-      stoveTexures:
-         KEYS: none
-         DEFAULT: goldenCarrot
-   poisonousPotato:
-      material: POISONOUS_POTATO
-      food: 2
-      saturation: 1.2
-      experience: 100
-      types: 0-1-0
-      flavors: 0-0-0-0-0-3
-      poisoned: true
-   rawSalmon: 
-      material: SALMON
-      food: 2
-      saturation: 0.4
-      experience: 40
-      types: 0-1-0
-      flavors: 0-0-2-4-1-0
-      boilerTextures:
-         KEYS: pufferFish,clownFish
-         pufferFish: fishSurprise
-         clownFish: fishSurprise
-         DEFAULT: boiledSalmon
-      ovenTextures:
-         KEYS: bread,pufferFish,clownFish
-         bread: breadedFish
-         pufferFish: fishSurprise
-         clownFish: fishSurprise
-         DEFAULT: bakedSalmon
-      stoveTexures:
-         KEYS: pufferFish,clownFish
-         pufferFish: fishSurprise
-         clownFish: fishSurprise
-         DEFAULT: grilledSalmon
-   rawRabbit:
+   Rabbit: 
       material: RABBIT
-      food: 3
-      saturation: 1.8
-      experience: 60
+      food: 4
+      saturation: 3
+      experience: 11
       types: 1-0-0
-      flavors: 0-0-0-4-0-2
+      flavors: 1-3-0-1-0-2
       boilerTextures:
-         KEYS: potato,poisonousPotato,carrot
-         potato: rabbitStew
-         poisonousPotato: rabbitStew
-         carrot: rabbitStew
+         KEYS: Potato,Poisonous Potato,Carrot,Beetroot,Magma Cream,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce,Cheese
+         Potato: rabbitStew
+         Poisonous Potato: rabbitStew
+         Carrot: rabbitStew
+         Beetroot: rabbitStew
+         Magma Cream: creamyRabbitStew
+         Corn: rabbitStew
+         Onion: rabbitStew
+         Turnip: rabbitStew
+         Cabbage: rabbitStew
+         Eggplant: rabbitStew
+         Lettuce: rabbitStew
+         Cheese: cheesyRabbitSoup
          DEFAULT: boiledRabbit
       ovenTextures:
-         KEYS: none
+         KEYS: Bread,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Cheese,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: rabbitPie
+         Apple: appleRabbit
+         Melon Slice: melonRabbit
+         Chorus Fruit: chorusRabbit
+         Cactus: cactusRabbit
+         Slime Ball: slimeyRabbit
+         Magma Cream: creamyRabbit
+         Glistening Melon: melonRabbit
+         Corn: cornRabbit
+         Cheese: cheesyRabbit
+         Plum: fruityRabbit
+         Coconut: tropicalRabbit
+         Orange: orangeRabbit
+         Pear: pearRabbit
+         Beetroot: rabbitAndVeggies
+         Carrot: rabbitAndVeggies
          DEFAULT: bakedRabbit
-      stoveTexures:
+      stoveTextures:
          KEYS: none
          DEFAULT: grilledRabbit
-   wheat:
-      material: WHEAT
-      food: 3
-      saturation: 0.4
-      experience: 10
+   Salmon: 
+      material: SALMON
+      food: 5
+      saturation: 4.8
+      experience: 7
       types: 1-0-0
-      flavors: 0-3-0-2-0-0
+      flavors: 1-1-2-0-2-1
       boilerTextures:
-         KEYS: none
+         KEYS: Pufferfish,Clownfish,Apple,Potato,Poisonous Potato,Beetroot,Melon Slice,Carrot,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Dried Kelp,Corn,Onion,Turnip,Cabbage,Eggplant,Lettuce,Cheese,Plum,Coconut,Orange,Pear
+         Pufferfish: fishSurprise
+         Clownfish: fishSurprise
+         Apple: fruityFishSoup
+         Potato: fishNPotatoes
+         Poisonous Potato: fishNPotatoes
+         Beetroot: fishStew
+         Melon Slice: fruityFish
+         Carrot: fishStew
+         Chorus Fruit: fruityFishSoup
+         Cactus: fruityFishSoup
+         Slime Ball: slimeyFishDinner
+         Magma Cream: creamyFishSoup
+         Glistening Melon: fruityFishSoup
+         Dried Kelp: underseaSpecial
+         Corn: fishStew
+         Onion: fishStew
+         Turnip: fishStew
+         Cabbage: fishStew
+         Eggplant: fishStew
+         Lettuce: fishStew
+         Cheese: cheesyFishSoup
+         Plum: fruityFishSoup
+         Coconut: fruityFishSoup
+         Orange: fruityFishSoup
+         Pear: fruityFishSoup
+         DEFAULT: boiledSalmon
+      ovenTextures:
+         KEYS: Bread,Clownfish,Pufferfish,Apple,Melon Slice,Chorus Fruit,Cactus,Slime Ball,Magma Cream,Glistening Melon,Corn,Plum,Coconut,Orange,Pear,Beetroot,Carrot
+         Bread: breadedFish
+         Clownfish: fishSurprise
+         Pufferfish: fishSurprise
+         Apple: fruityFishDinner
+         Melon Slice: fruityFishDinner
+         Chorus Fruit: fruityFishDinner
+         Cactus: fruityFishDinner
+         Slime Ball: slimeyFishDinner
+         Magma Cream: creamyFish
+         Glistening Melon: fruityFishDinner
+         Corn: fishAndVeggies
+         Plum: plumFish
+         Coconut: fruityFishDinner
+         Orange: fruityFishDinner
+         Pear: fruityFishDinner
+         Beetroot: fishAndVeggies
+         Carrot: fishAndVeggies
+         DEFAULT: bakedSalmon
+      stoveTextures:
+         KEYS: Bread,Clownfish,Pufferfish
+         Bread: fishSandwich
+         Clownfish: fishSurprise
+         Pufferfish: fishSurprise
+         DEFAULT: grilledSalmon
+   Wheat:
+      material: WHEAT
+      food: 4
+      saturation: 6
+      experience: 6
+      types: 1-0-0
+      flavors: 0-3-1-1-1-1
+      boilerTextures:
+         KEYS: Apple,Melon Slice,Pufferfish,Clownfish,Cactus,Slime Ball,Glistening Melon,Plum,Coconut,Orange,Pear
+         Apple: appleNoodles
+         Melon Slice: melonNoodles
+         Pufferfish: fishyNoodles
+         Clownfish: fishyNoodles
+         Cactus: desertNoodles
+         Slime Ball: slimeyNoodles
+         Glistening Melon: melonNoodles
+         Plum: plumNoodles
+         Coconut: coconutNoodles
+         Orange: orangeNoodles
+         Pear: pearNoodles
          DEFAULT: noodles
       ovenTextures:
-         KEYS: none
+         KEYS: Apple,Potato,Poisonous Potato,Beetroot,Melon Slice,Pufferfish,Carrot,Chorus Fruit,Clownfish,Cactus,Turtle Egg,Slime Ball,Ender Pearl,Magma Cream,Glistening Melon,Phantom Membrane,Dried Kelp,Corn,Onion,Turnip,Cabbage,Tomato,Eggplant,Lettuce,Daikon,Cheese,Plum,Coconut,Orange,Pear
+         Apple: applePie
+         Potato: potatoBread
+         Poisonous Potato: potatoBread
+         Beetroot: beetrootBread
+         Melon Slice: melonBread
+         Pufferfish: fishBread
+         Carrot: carrotBread
+         Chorus Fruit: chorusBread
+         Clownfish: fishBread
+         Cactus: cactusBread
+         Turtle Egg: turtleBread
+         Slime Ball: slimeBread
+         Ender Pearl: pearlBread
+         Magma Cream: creamBread
+         Glistening Melon: melonBread
+         Phantom Membrane: phantomBread
+         Dried Kelp: seaBread
+         Corn: cornBread
+         Onion: onionBread
+         Turnip: turnipBread
+         Cabbage: cabbageBread
+         Tomato: tomatoBread
+         Eggplant: eggplantBread
+         Lettuce: lettuceBread
+         Daikon: daikonBread
+         Cheese: cheeseBread
+         Plum: plumPie
+         Coconut: coconutBread
+         Orange: orangePie
+         Pear: pearPie
          DEFAULT: bread
       stoveTextures:
          KEYS: none
          DEFAULT: grilledWheat
-   cactus:
-      material: CACTUS
-      food: 2
+   Bread: 
+      material: BREAD
+      food: 4
+      saturation: 2.4
+      experience: 2
+      types: 0-1-0
+      flavors: 0-4-0-0-0-0
+   Apple: 
+      material: APPLE
+      food: 3
       saturation: 1.2
-      experience: 10
+      experience: 7
+      types: 0-1-0
+      flavors: 1-2-1-0-0-0
+   Potato: 
+      material: POTATO
+      food: 4
+      saturation: 2.4
+      experience: 3
+      types: 0-1-0
+      flavors: 0-0-2-1-1-0
+   Spider Eye: 
+      material: SPIDER_EYE
+      food: 2
+      saturation: 1.6
+      experience: 7
+      types: 0-1-0
+      flavors: 4-0-0-0-0-0
+      poisoned: true
+   Beetroot: 
+      material: BEETROOT
+      food: 1
+      saturation: 0.6
+      experience: 5
       types: 0-1-0
       flavors: 1-1-1-0-0-1
-   turtleEgg:
-      material: TURTLE_EGG
-      food: 3
-      saturation: 1.5
-      experience: 100
+   Melon Slice: 
+      material: MELON_SLICE
+      food: 2
+      saturation: 0.6
+      experience: 5
       types: 0-1-0
-      flavors: 0-1-1-1-1-0
-   slimeBall:
+      flavors: 0-3-1-0-0-0
+   Pufferfish: 
+      material: PUFFERFISH
+      food: 1
+      saturation: 0.3
+      experience: 8
+      types: 0-1-0
+      flavors: 2-0-2-0-0-0
+      poisoned: true
+   Carrot: 
+      material: CARROT
+      food: 2
+      saturation: 1.8
+      experience: 3
+      types: 0-1-0
+      flavors: 0-2-1-1-0-0
+   Chorus Fruit: 
+      material: CHORUS_FRUIT
+      food: 3
+      saturation: 1.2
+      experience: 10
+      types: 0-1-0
+      flavors: 0-0-0-0-2-2
+   Clownfish: 
+      material: TROPICAL_FISH
+      food: 1
+      saturation: 0.3
+      experience: 5
+      types: 0-1-0
+      flavors: 0-0-2-2-0-0
+   Poisonous Potato: 
+      material: POISONOUS_POTATO
+      food: 2
+      saturation: 0.6
+      experience: 8
+      types: 0-1-0
+      flavors: 1-0-1-0-1-2
+      poisoned: true
+   Cactus: 
+      material: CACTUS
+      food: 1
+      saturation: 0.3
+      experience: 3
+      types: 0-1-0
+      flavors: 1-0-2-2-0-0
+   Turtle Egg: 
+      material: TURTLE_EGG
+      food: 2
+      saturation: 1.2
+      experience: 6
+      types: 0-1-0
+      flavors: 0-0-0-0-2-2
+   Slime Ball: 
       material: SLIME_BALL
       food: 1
-      saturation: 2
-      experience: 50
+      saturation: 1.2
+      experience: 4
       types: 0-1-0
-      flavors: 0-0-2-0-0-2
-   egg:
+      flavors: 0-0-0-2-2-0
+   Egg: 
       material: EGG
-      food: 1
-      saturation: 0.5
-      experience: 10
+      food: 2
+      saturation: 1.2
+      experience: 2
       types: 0-1-0
-      flavors: 0-2-0-2-0-0
-   milkBucket:
+      flavors: 0-0-2-2-0-0
+   Milk Bucket: 
       material: MILK_BUCKET
       food: 2
-      saturation: 1
-      experience: 40
+      saturation: 1.6
+      experience: 5
       types: 0-1-0
-      flavors: 0-2-0-1-0-1
-   enderPearl:
+      flavors: 0-3-0-0-0-1
+      trashMaterial: BUCKET
+   Ender Pearl: 
       material: ENDER_PEARL
-      food: 3
-      saturation: 1
-      experience: 100
-      types: 0-1-0
-      flavors: 3-0-0-1-1-0
-   magmaCream:
-      material: MAGMA_CREAM
       food: 2
-      saturation: 1.2
-      experience: 500
+      saturation: 1.9
+      experience: 10
       types: 0-1-0
-      flavors: 1-3-0-0-0-1
-   glisteningMelon:
-      material: GLISTENING_MELON
-      food: 1
-      saturation: 1.2
-      experience: 100
-      types: 0-1-0
-      flavors: 1-3-0-0-0-1
-   phantomMembrane:
-      material: PHANTOM_MEMBRANE
+      flavors: 0-0-0-0-2-2
+   Magma Cream: 
+      material: MAGMA_CREAM
       food: 3
-      saturation: 2
-      experience: 100
+      saturation: 1.2
+      experience: 8
       types: 0-1-0
-      flavors: 2-1-0-1-0-0
-   pumpkinSeeds:
-      material: PUMPKIN_SEED
+      flavors: 1-0-0-1-1-1
+   Glistening Melon: 
+      material: GLISTENING_MELON
+      food: 3
+      saturation: 1.2
+      experience: 6
+      types: 0-1-0
+      flavors: 2-2-0-0-0-0
+   Phantom Membrane: 
+      material: PHANTOM_MEMBRANE
+      food: 4
+      saturation: 1.2
+      experience: 6
+      types: 0-1-0
+      flavors: 0-1-1-1-0-1
+   Dried Kelp: 
+      material: DRIED_KELP
+      food: 1
+      saturation: 0.3
+      experience: 
+      types: 0-1-0
+      flavors: 0-0-0-1-3-0
+   Seeds: 
+      material: WHEAT_SEEDS
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-1-0-0-1
-   melonSeeds:
-      material: MELON_SEED
+      flavors: 1-2-0-0-0-0
+   Pumpkin Seeds: 
+      material: PUMPKIN_SEEDS
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-1-0-0-1
-   beetrootSeeds:
-      material: BEETROOT_SEED
+      flavors: 1-1-1-0-0-0
+   Melon Seeds: 
+      material: MELON_SEEDS
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-1-0-0-1
-   seaPickle:
+      flavors: 0-0-3-0-0-0
+   Beetroot Seeds: 
+      material: BEETROOT_SEEDS
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 1-1-1-0-0-0
+   Rotten Flesh: 
+      material: ROTTEN_FLESH
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-0-2-0-1-0
+   Sea Pickle: 
       material: SEA_PICKLE
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 2-2-1-0-2-1
-   brownMushroom:
+      flavors: 0-0-0-1-2-0
+   Brown Mushroom: 
       material: BROWN_MUSHROOM
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-1-0-0-1
-   redMushroom:
+      flavors: 0-0-0-0-0-3
+   Red Mushroom: 
       material: RED_MUSHROOM
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-1-0-0-1
-   seaGrass:
+      flavors: 3-0-0-0-0-0
+   Sea Grass: 
       material: SEA_GRASS
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-1-1-2-1
-   chorusFlower:
+      flavors: 0-1-0-0-2-0
+   Chorus Flower: 
       material: CHORUS_FLOWER
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-0-1-1-2
-   chorusPlant:
+      flavors: 0-0-0-2-0-1
+   Chorus Plant: 
       material: CHORUS_PLANT
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-0-2-1-1-2
-   oxeyeDaisy:
+      flavors: 0-0-0-2-0-1
+   Oxeye Daisy: 
       material: OXEYE_DAISY
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 3-0-0-0-0-0
-   pinkTulip:
+      flavors: 0-0-0-1-0-2
+   Pink Tulip: 
       material: PINK_TULIP
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-3-0-0-0-0
-   whiteTulip:
+      flavors: 1-0-1-0-0-1
+   White Tulip: 
       material: WHITE_TULIP
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-2-0-0-0-1
-   orangeTulip:
+      flavors: 1-2-0-0-0-0
+   Orange Tulip: 
       material: ORANGE_TULIP
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-3-0-0-0
-   redTulip:
+      flavors: 1-2-0-0-0-0
+   Red Tulip: 
       material: RED_TULIP
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-3-0-0
-   azureBluet:
+      flavors: 0-1-2-0-0-0
+   Azure Bluet: 
       material: AZURE_BLUET
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-0-3-0
-   allium:
+      flavors: 0-0-0-1-2-0
+   Allium: 
       material: ALLIUM
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-0-0-3
-   blueOrchid:
+      flavors: 0-0-0-0-1-2
+   Blue Orchid: 
       material: BLUE_ORCHID
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-1-1-1
-   poppy:
+      flavors: 0-0-1-2-0-0
+   Poppy: 
       material: POPPY
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-0-0-0-0
-   dandelion:
-      material: DENDELION
+      flavors: 2-0-0-0-0-1
+   Dandelion: 
+      material: DANDELION
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-2-1-0-0
-   lilac:
+      flavors: 0-3-0-0-0-0
+   Lilac: 
       material: LILAC
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-1-0-0-2-0
-   roseBush:
+      flavors: 1-1-1-0-0-0
+   Rose Bush: 
       material: ROSE_BUSH
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-0-0-0-0-2
-   peony:
+      flavors: 0-0-0-1-1-1
+   Peony:
       material: PEONY
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 2-0-0-0-0-1
-   glowstoneDust:
+      flavors: 0-0-2-1-0-0
+   Glowstone: 
       material: GLOWSTONE_DUST
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 3-0-0-0-0-1
-   inkSac:
+      flavors: 0-1-0-0-2-0
+   Ink Sac: 
       material: INK_SAC
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-3-0-1-0
-   cactusGreen:
+      flavors: 0-0-0-0-1-2
+   Cactus Green: 
       material: CACTUS_GREEN
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 1-2-0-0-0-1
-   cocoaBeans:
+      flavors: 2-0-0-0-0-1
+   Cocoa Beans: 
       material: COCOA_BEANS
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-1-3-0-0-0
-   lapisLazuli:
+      flavors: 0-0-0-0-3-0
+   Lapis Lazuli: 
       material: LAPIS_LAZULI
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-0-3-1
-   boneMeal:
+      flavors: 0-0-2-1-0-0
+   Bone Meal: 
       material: BONE_MEAL
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-1-1-0-1-0
-   sugar:
+      flavors: 1-2-0-0-0-0
+   Sugar: 
       material: SUGAR
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-4-0-0-0-0
-   netherWart:
+      flavors: 0-3-0-0-0-0
+   Nether Wart: 
       material: NETHER_WART
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 2-2-0-0-0-0
-   FermentedSpiderEye:
+      flavors: 0-0-0-3-0-0
+   Fermented Spider Eye: 
       material: FERMENTED_SPIDER_EYE
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 2-1-1-0-0-0
-   blazePowder:
+      flavors: 3-0-0-0-0-0
+   Blaze Powder: 
       material: BLAZE_POWDER
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 4-0-0-0-0-0
-   ghastTear:
+      flavors: 0-0-1-0-0-2
+   Ghast Tear: 
       material: GHAST_TEAR
       food: 0
       saturation: 0
-      experience: 10
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-0-2-2
+      flavors: 0-0-0-0-3-0
 customItems:
-   corn:
+   Corn:
       NBTKey: Material
       NBTString: Corn
-      food: 2
+      food: 3
       saturation: 1.2
-      experience: 55
+      experience: 5
       types: 0-1-0
-      flavors: 0-2-0-1-0-0
-   onion:
+      flavors: 1-0-0-2-0-1
+   Onion:
       NBTKey: Material
       NBTString: Onion
-      food: 2
-      saturation: 1.5
-      experience: 50
+      food: 1
+      saturation: 1
+      experience: 1.2
       types: 0-1-0
-      flavors: 0-2-1-0-0-1
-   turnip:
+      flavors: 0-0-3-0-0-1
+   Turnip:
       NBTKey: Material
       NBTString: Turnip
       food: 1
-      saturation: 2
-      experience: 20
+      saturation: 0.6
+      experience: 7
       types: 0-1-0
-      flavors: 0-1-2-0-0-1
-   cabbage:
+      flavors: 3-0-0-1-0-0
+   Cabbage:
       NBTKey: Material
       NBTString: Cabbage
-      food: 3
-      saturation: 2
-      experience: 30
+      food: 2
+      saturation: 1.2
+      experience: 4
       types: 0-1-0
-      flavors: 0-1-0-1-0-1
-   tomato:
+      flavors: 0-0-0-0-2-2
+   Tomato:
       NBTKey: Material
       NBTString: Tomato
       food: 2
-      saturation: 2.5
-      experience: 50
+      saturation: 1.2
+      experience: 4
       types: 0-1-0
-      flavors: 0-3-0-0-0-0
-   eggplant:
+      flavors: 1-2-0-1-0-0
+   Eggplant:
       NBTKey: Material
       NBTString: Eggplant
-      food: 1
-      saturation: 1.2
-      experience: 100
+      food: 3
+      saturation: 1
+      experience: 5
       types: 0-1-0
-      flavors: 0-2-1-0-0-0
-   lettuce:
+      flavors: 0-0-0-0-2-2
+   Lettuce:
       NBTKey: Material
       NBTString: Lettuce
-      food: 3
-      saturation: 1.5
-      experience: 60
+      food: 2
+      saturation: 1.2
+      experience: 5
       types: 0-1-0
-      flavors: 0-2-0-0-0-2
-   daikon:
+      flavors: 1-0-1-2-0-0
+   Daikon:
       NBTKey: Material
       NBTString: Daikon
-      food: 2
-      saturation: 1
-      experience: 20
-      types: 0-1-0
-      flavors: 0-2-2-0-0-0
-   salt:
-      NBTKey: Material
-      NBTString: Salt
       food: 1
-      saturation: 2
-      experience: 40
+      saturation: 0.6
+      experience: 6
+      types: 0-1-0
+      flavors: 0-2-0-0-1-1
+   Cheese:
+      NBTKey: Material
+      NBTString: Cheese
+      food: 3
+      saturation: 1.8
+      experience: 4
+      types: 0-1-0
+      flavors: 1-1-1-0-1-0
+   Plum:
+      NBTKey: Material
+      NBTString: Plum
+      food: 1
+      saturation: 1.2
+      experience: 8
+      types: 0-1-0
+      flavors: 0-4-0-0-0-0
+   Coconut:
+      NBTKey: Material
+      NBTString: Coconut
+      food: 3
+      saturation: 1
+      experience: 7
+      types: 0-1-0
+      flavors: 0-0-0-0-3-1
+   Orange:
+      NBTKey: Material
+      NBTString: Orange
+      food: 2
+      saturation: 1.2
+      experience: 7
+      types: 0-1-0
+      flavors: 0-0-2-0-0-2
+   Pear:
+      NBTKey: Material
+      NBTString: Pear
+      food: 3
+      saturation: 1.8
+      experience: 8
+      types: 0-1-0
+      flavors: 0-1-1-0-1-1
+   Techaberry:
+      NBTKey: Material
+      NBTString: Techaberry
+      food: 0
+      saturation: 0
+      experience: 0
       types: 0-0-1
-      flavors: 0-0-0-0-5-0
+      flavors: 0-0-0-0-0-3
+   Snowberry:
+      NBTKey: Material
+      NBTString: Snowberry
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-0-0-0-1-2
+   Cheriberry:
+      NBTKey: Material
+      NBTString: Cheriberry
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-0-1-2-0-0
+   Lychiberry:
+      NBTKey: Material
+      NBTString: Lychiberry
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 1-1-1-0-0-0
+   Pinaberry:
+      NBTKey: Material
+      NBTString: Pinaberry
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-0-0-1-1-1
+   Pitaya:
+      NBTKey: Material
+      NBTString: Pitaya
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-0-0-2-0-1
+   Razzberry:
+      NBTKey: Material
+      NBTString: Razzberry
+      food: 0
+      saturation: 0
+      experience: 0
+      types: 0-0-1
+      flavors: 0-1-2-0-0-0
 textures:
    potRoast:
       head: false
       material: COOKED_BEEF
       lorename: Pot Roast
-   beefSandwich: 
-      head: true
-      id: 560931c5-4bb4-4187-9c94-77d3171e586e
-      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
-      lorename: Beef Sandwich
+   steakNCheese:
+      head: false
+      material: COOKED_BEEF
+      lorename: Steak N' Cheese
+   porkStew:
+      head: false
+      material: RABBIT_STEW
+      lorename: Pork Stew
+   creamedApple:
+      head: false
+      material: APPLE
+      lorename: Creamed Apple
+   applesauce:
+      head: false
+      material: APPLE
+      lorename: Applesauce
+   dirtyAppleStew:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Dirty Apple Stew
+   fruitSalad:
+      head: false
+      material: DRIED_KELP
+      lorename: Fruit Salad
+   goldenFishStew:
+      head: false
+      material: RABBIT_STEW
+      lorename: Golden Fish Stew
+   slimeyApple:
+      head: false
+      material: APPLE
+      lorename: Slimey Apple
+   fruityFishSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Fruity Fish Soup
+   cheesyFishSoup:
+      head: false
+      material: COOKED_COD
+      lorename: Cheesy Fish Soup
+   fishStew:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Fish Stew
+   underseaSpecial:
+      head: false
+      material: COOKED_COD
+      lorename: Undersea Special
+   creamyFishSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Creamy Fish Soup
+   slimeyFishDinner:
+      head: false
+      material: COOKED_COD
+      lorename: Slimey Fish Dinner
+   fishNPotatoes:
+      head: false
+      material: COOKED_COD
+      lorename: Fish N' Potatoes
+   chickenAndDumplings:
+      head: false
+      material: RABBIT_STEW
+      lorename: Chicken And Dumplings
+   muttonRoast:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Mutton Roast
+   fruityMuttonSoup:
+      head: false
+      material: RABBIT_STEW
+      lorename: Fruity Mutton Stew
+   muttonAndFish:
+      head: false
+      material: RABBIT_STEW
+      lorename: Mutton And Fish
+   slimeyMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Slimey Mutton
+   creamyMuttonSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Creamy Mutton Soup
+   cheesyMuttonSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Cheesy Mutton Soup
+   tropicalMuttonSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Tropical Mutton Soup
+   fruityChickenSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Fruity Chicken Soup
+   chickenNFish:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Chicken And Fish
+   tropicalChickenSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Tropical Chicken Soup
+   creamyChickenSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Creamy Chicken Soup
+   chickenSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Chicken Soup
+   slimeyChickenSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Slimey Chicken Soup
+   vegetableSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Vegetable Soup
+   creamyVegetableSoup:
+      head: false
+      material: MUSHROOM_STEW
+      lorename: Creamy Vegetable Soup
+   rabbitStew:
+      head: false
+      material: RABBIT_STEW
+      lorename: Rabbit Stew
+   creamyRabbitStew:
+      head: false
+      material: RABBIT_STEW
+      lorename: Creamy Rabbit Stew
+   cheesyRabbitSoup:
+      head: false
+      material: RABBIT_STEW
+      lorename: Cheesy Rabbit Soup
+   steakPotatoDinner:
+      head: false
+      material: COOKED_BEEF
+      lorename: Steak And Potato Dinner
+   appleSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Apple Steak
+   melonSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Melon Steak
+   chorusSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Chorus Steak
+   cactusSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Cactus Steak
+   steakCornDinner:
+      head: false
+      material: COOKED_BEEF
+      lorename: Steak And Corn Dinner
+   cheeseSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Cheese Steak
+   fruitySteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Fruity Steak
+   tropicalSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Tropical Steak
+   orangeSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Orange Steak
+   pearSteak:
+      head: false
+      material: COOKED_BEEF
+      lorename: Pear Steak
+   steakAndVeggies:
+      head: false
+      material: COOKED_BEEF
+      lorename: Steak And Veggies
+   applePork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Apple Pork
+   melonPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Melon Pork
+   chorusPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Chorus Pork
+   cactusPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Cactus Pork
+   slimeyPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Slimey Pork
+   creamyPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Creamy Pork
+   porkCornDinner:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Pork And Corn Dinner
+   cheesyPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: CheesyPork
+   fruityPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Fruity Pork
+   tropicalPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Tropical Pork
+   orangePork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Orange Pork
+   pearPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Pear Pork
+   porkAndVeggies:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Pork And Veggies
+   goldenPie:
+      head: false
+      material: PUMPKIN_PIE
+      lorename: Golden Pie
+   goldenFruitSalad:
+      head: false
+      material: DRIED_KELP
+      lorename: Golden Fruit Salad
+   breadedFish:
+      head: false
+      material: COOKED_COD
+      lorename: Breaded Fish
+   fruityFishDinner:
+      head: false
+      material: COOKED_COD
+      lorename: Fruity Fish Dinner
+   creamyFish:
+      head: false
+      material: COOKED_COD
+      lorename: Creamy Fish
+   fishAndVeggies:
+      head: false
+      material: COOKED_COD
+      lorename: Fish And Veggies
+   plumFish:
+      head: false
+      material: COOKED_COD
+      lorename: Plum Fish
+   breadedChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Breaded Chicken
+   appleChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Apple Chicken
+   melonChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Melon Chicken
+   chorusChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Chorus Chicken
+   cactusChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Cactus Chicken
+   slimeyChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Slimey Chicken
+   creamyChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Creamy Chicken
+   cornChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Corn Chicken
+   cheesyChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Cheesy Chicken
+   fruityChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Fruity Chicken
+   tropicalChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Tropical Chicken
+   orangeChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Orange Chicken
+   pearChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Pear Chicken
+   chickenAndVeggies:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Chicken And Veggies
+   appleMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Apple Mutton
+   slimeyCarrot:
+      head: false
+      material: CARROT
+      lorename: Slimey Carrot
+   appleRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Apple Rabbit
+   potatoBread:
+      head: false
+      material: BREAD
+      lorename: Potato Bread
+   melonMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Melon Mutton
+   creamyCarrot:
+      head: false
+      material: CARROT
+      lorename: Creamy Carrot
+   melonRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Melon Rabbit
+   chorusMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Chorus Mutton
+   salad:
+      head: false
+      material: DRIED_KELP
+      lorename: Salad
+   chorusRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Chorus Rabbit
+   beetrootBread:
+      head: false
+      material: BREAD
+      lorename: Beetroot Bread
+   cactusMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Cactus Mutton
+   cactusRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Cactus Rabbit
+   melonBread:
+      head: false
+      material: BREAD
+      lorename: Melon Rabbit
+   slimeyRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Slimey Rabbit
+   fishBread:
+      head: false
+      material: BREAD
+      lorename: Fish Bread
+   creamyMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Creamy Mutton
+   carrotBread:
+      head: false
+      material: BREAD
+      lorename: Carrot Bread
+   melonRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Melon Rabbit
+   chorusBread:
+      head: false
+      material: BREAD
+      lorename: Chorus Bread
+   cornMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Corn Mutton
+   cornRabbit:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Corn Rabbit
+   creamyFish:
+      head: false
+      material: COOKED_COD
+      lorename: Creamy Fish
+   cheesyMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Cheesy Mutton
+   cheesyRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Cheesy Rabbit
+   cactusBread:
+      head: false
+      material: BREAD
+      lorename: Cactus Bread
+   cornMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Corn Mutton
+   cornRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Corn Rabbit
+   creamyFish:
+      head: false
+      material: BREAD
+      lorename: Creamy Fish
+   cheesyMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Cheesy Mutton
+   cheesyRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Cheesy Rabbit
+   cactusBread:
+      head: false
+      material: BREAD
+      lorename: Cactus Bread
+   fruityMutton:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Fruity Mutton
+   fruityRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Fruity Rabbit
+   turtleBread:
+      head: false
+      material: BREAD
+      lorename: Turtle Bread
+   tropicalMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: 
+   tropicalRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Tropical Rabbit
+   slimeBread:
+      head: false
+      material: BREAD
+      lorename: Slime Bread
+   orangeMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Orange Mutton
+   orangeRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Orange Rabbit
+   pearlBread:
+      head: false
+      material: BREAD
+      lorename: Pearl Bread
+   pearMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Pear Mutton
+   pearRabbit:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Pear Rabbit
+   creamBread:
+      head: false
+      material: BREAD
+      lorename: Cream Bread
+   muttonAndVeggies:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Mutton And Veggies
+   rabbitAndVeggies:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Rabbit And Veggies
+   phantomBread:
+      head: false
+      material: BREAD
+      lorename: Phantom Bread
+   seaBread:
+      head: false
+      material: BREAD
+      lorename: Sea Bread
+   cornBread:
+      head: false
+      material: BREAD
+      lorename: Corn Bread
+   onionBread:
+      head: false
+      material: BREAD
+      lorename: Onion Bread
+   turnipBread:
+      head: false
+      material: BREAD
+      lorename: Turnip Bread
+   cabbageBread:
+      head: false
+      material: BREAD
+      lorename: Cabbage Bread
+   tomatoBread:
+      head: false
+      material: BREAD
+      lorename: Tomato Bread
+   eggplantBread:
+      head: false
+      material: BREAD
+      lorename: Eggplant Bread
+   lettuceBread:
+      head: false
+      material: BREAD
+      lorename: Lettuce Bread
+   daikonBread:
+      head: false
+      material: BREAD
+      lorename: Daikon Bread
+   cheeseBread:
+      head: false
+      material: BREAD
+      lorename: Cheese Bread
+   coconutBread:
+      head: false
+      material: BREAD
+      lorename: Coconut Bread
+   orangePie:
+      head: false
+      material: PUMPKIN_PIE
+      lorename: Orange Pie
    boiledSteak:
       head: false
       material: COOKED_BEEF
       lorename: Boiled Steak
-   steakPotatoDinner: 
+   boiledPork:
       head: false
-      material: COOKED_BEEF
-      lorename: Steak n' Potato Dinner
-   roastedSteak: 
+      material: COOKED_PORKCHOP
+      lorename: Boiled Pork
+   goldenApple:
+      head: false
+      material: GOLDEN_APPLE
+      lorename: Golden Apple
+   boiledCod:
+      head: false
+      material: COOKED_COD
+      lorename: Boiled Cod
+   enchantedGoldenApple:
+      head: false
+      material: ENCHANTED_GOLDEN_APPLE
+      lorename: Enchanted Golden Apple
+   boiledChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Boiled Chicken
+   boiledMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Boiled Mutton
+   goldenCarrot:
+      head: false
+      material: GOLDEN_CARROT
+      lorename: Golden Carrot
+   boiledRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Boiled Rabbit
+   boiledSalmon:
+      head: false
+      material: COOKED_SALMON
+      lorename: Boiled Salmon
+   roastedSteak:
       head: false
       material: COOKED_BEEF
       lorename: Roasted Steak
-   grilledSteak: 
+   roastedPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Roasted Pork
+   bakedCod:
+      head: false
+      material: COOKED_COD
+      lorename: Baked Cod
+   bakedChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Baked Chicken
+   lambChops:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Lambchops
+   bakedRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Baked Rabbit
+   bakedSalmon:
+      head: false
+      material: COOKED_SALMON
+      lorename: Baked Salmon
+   bread:
+      head: false
+      material: BREAD
+      lorename: Bread
+   grilledSteak:
       head: false
       material: COOKED_BEEF
       lorename: Grilled Steak
-   hamSandwich: 
+   grilledPork:
+      head: false
+      material: COOKED_PORKCHOP
+      lorename: Grilled Pork
+   grilledCod:
+      head: false
+      material: COOKED_COD
+      lorename: Grilled Cod
+   grilledChicken:
+      head: false
+      material: COOKED_CHICKEN
+      lorename: Grilled Chicken
+   grilledMutton:
+      head: false
+      material: COOKED_MUTTON
+      lorename: Grilled Mutton
+   grilledRabbit:
+      head: false
+      material: COOKED_RABBIT
+      lorename: Grilled Rabbit
+   grilledSalmon:
+      head: false
+      material: COOKED_SALMON
+      lorename: Grilled Salmon
+   grilledWheat:
+      head: false
+      material: WHEAT
+      lorename: Grilled Wheat
+   beefSandwich:
+      head: true
+      id: 560931c5-4bb4-4187-9c94-77d3171e586e
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
+      lorename: Beef Sandwich
+   hamSandwich:
       head: true
       id: 560931c5-4bb4-4187-9c94-77d3171e586e
       value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
       lorename: Ham Sandwich
-   porkStew: 
-      head: true
-      id: ee4b5394-9c00-4e89-94fc-6220eb2bb6d5
-      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZjYjZlNjM4YzY5N2FhZjZhOGM1ODViZWM3OWMyNmVkYTRjY2ExNmM4NGM3MjZiZGZkMzYxZjc2YzUxNTkifX19
-      lorename: Pork Stew
-   boiledPork: 
-      head: false
-      material: COOKED_PORKSHOP
-      lorename: Boiled Pork
-   roastedPork: 
-      head: false
-      material: COOKED_PORKCHOP
-      lorename: Roasted Pork
-   grilledPork: 
-      head: false
-      material: COOKED_PORKCHOP
-      lorename: Grilled Pork
-   goldenApple: 
-      head: false
-      material: GOLDEN_APPLE
-      lorename: Golden Apple
-   fishSurprise: 
+   fishSurprise:
       head: true
       id: 45f7a0d1-5ad3-4a0b-9854-09258182012b
       value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWZiZTFiZTE5ZTRmZmFiYTk3ZDYxYmVlZjdjYTMwMTBiNjI5OTZjNjQxZTU3MDg0ZmMzNjRhNmYzZWIxNDEzOCJ9fX0=
       lorename: Fish Surprise
-   boiledCod: 
-      head: false
-      material: COOKED_COD
-      lorename: Boiled Cod
-   breadedFish: 
-      head: false
-      material: COOKED_COD
-      lorename: Breaded Fish
-   bakedCod: 
-      head: false
-      material: COOKED_COD
-      lorename: Baked Cod
-   grilledCod: 
-      head: false
-      material: COOKED_COD
-      lorename: Grilled Cod
-   enchantedGoldenApple: 
-      head: false
-      material: ENCHANTED_GOLDEN_APPLE
-      lorename: Enchanted Golden Apple
-   boiledChicken: 
-      head: false
-      material: COOKED_CHICKEN
-      lorename: Boiled Chicken
-   bakedChicken: 
-      head: false
-      material: COOKED_CHICKEN
-      lorename: Baked Chicken
-   grilledChicken: 
-      head: false
-      material: COOKED_CHICKEN
-      lorename: Grilled Chicken
-   boiledMutton: 
-      head: false
-      material: COOKED_MUTTON
-      lorename: Boiled Mutton
-   lambChop: 
-      head: false
-      material: COOKED_MUTTON
-      lorename: Lamb Chops
-   grilledMutton: 
-      head: false
-      material: COOKED_MUTTON
-      lorename: Grilled Mutton
-   goldenCarrot: 
-      head: false
-      material: GOLDEN_CARROT
-      lorename: Golden Carrot
-   rabbitStew: 
+   appleNoodles:
       head: true
-      id: ee4b5394-9c00-4e89-94fc-6220eb2bb6d5
-      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZjYjZlNjM4YzY5N2FhZjZhOGM1ODViZWM3OWMyNmVkYTRjY2ExNmM4NGM3MjZiZGZkMzYxZjc2YzUxNTkifX19
-      lorename: Rabbit Stew
-   boiledRabbit: 
-      head: false
-      material: COOKED_RABBIT
-      lorename: Boiled Rabbit
-   bakedRabbit: 
-      head: false
-      material: COOKED_RABBIT
-      lorename: Baked Rabbit
-   grilledRabbit: 
-      head: false
-      material: COOKED_RABBIT
-      lorename: Grilled Rabbit
-   boiledSalmon: 
-      head: false
-      material: COOKED_SALMON
-      lorename: Boiled Salmon
-   bakedSalmon: 
-      head: false
-      material: COOKED_SALMON
-      lorename: Baked Salmon
-   grilledSalmon: 
-      head: false
-      material: COOKED_SALMON
-      lorename: Grilled Salmon
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Apple Noodles
+   melonNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Melon Noodles
+   fishyNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Fishy Noodles
+   desertNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Desert Noodles
+   slimeyNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Slimey Noodles
+   plumNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Plum Noodles
+   coconutNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Coconut Noodles
+   orangeNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Orange Noodles
+   pearNoodles:
+      head: true
+      id: ae43f401-53c1-47cd-a055-230851ec77db
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
+      lorename: Pear Noodles
+   hamPie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Ham Pie
+   muttonPie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Mutton Pie
+   rabbitPie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Rabbit Pie
+   applePie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Apple Pie
+   fishSandwich:
+      head: true
+      id: 560931c5-4bb4-4187-9c94-77d3171e586e
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
+      lorename: Fish Sandwich
+   chickenSandwich:
+      head: true
+      id: 560931c5-4bb4-4187-9c94-77d3171e586e
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
+      lorename: Chicken Sandwich
+   muttonSandwich:
+      head: true
+      id: 560931c5-4bb4-4187-9c94-77d3171e586e
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTQ5NjU4OWZiNWMxZjY5Mzg3YjdmYjE3ZDkyMzEyMDU4ZmY2ZThlYmViM2ViODllNGY3M2U3ODE5NjExM2IifX19
+      lorename: Mutton Sandwich
+   plumPie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Plum Pie
+   pearPie:
+      head: true
+      id: cb4d1b2c-ef39-42ec-ac93-4c737907ed32
+      value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQxOGM2YjBhMjlmYzFmZTc5MWM4OTc3NGQ4MjhmZjYzZDJhOWZhNmM4MzM3M2VmM2FhNDdiZjNlYjc5In19fQ==
+      lorename: Pear Pie
    noodles:
       head: true
       id: ae43f401-53c1-47cd-a055-230851ec77db
       value: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTk0ODU2NjNlNjUyNjRhM2RjMzA0NzJlNmE2OTMxNDQ2YmVkMzJjMmU4OTk5MDVmYWNmMThiMjkxOTY4OWMxIn19fQ==
       lorename: Noodles
-   bread: 
-      head: false
-      material: BREAD
-      lorename: Baked Bread
-   grilledWheat: 
-      head: false
-      material: WHEAT
-      lorename: Grilled Wheat
 
-foodInfoLore: false
+foodInfoLore: true
 configVersion: 1
-stationTimes: 300000
+stationTimes: 1
 maxCookTime: 900000
 
 ## MySQL setup ##
-host:
-database:
-username:
-password:
-port: 3306
+host: 
+database: 
+username: 
+password: 
+port: 
 tablename1: DCStationLocals
 tablename2: DCPlayerTastes
 ##################
+   
