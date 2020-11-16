@@ -13,11 +13,11 @@ import org.bukkit.plugin.Plugin;
 import de.tr7zw.nbtapi.NBTCompound;
 import de.tr7zw.nbtapi.NBTItem;
 import de.tr7zw.nbtapi.NBTListCompound;
-import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.Cooking;
 import net.md_5.bungee.api.ChatColor;
 
 public class CustomFoodItem{
-	private static Plugin plugin = Main.getPlugin(Main.class);
+	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
 	public int food;
 	public float saturation;
 	public int experience;

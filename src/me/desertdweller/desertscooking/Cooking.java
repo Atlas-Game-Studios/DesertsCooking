@@ -20,7 +20,7 @@ import me.desertdweller.desertscooking.customfood.Station;
 import me.desertdweller.desertscooking.listeners.FoodEating;
 import net.md_5.bungee.api.ChatColor;
 
-public class Main extends JavaPlugin implements Listener{
+public class Cooking extends JavaPlugin implements Listener{
 	private Connection connection;
 	public String host, database, username, password;
 	public int port;

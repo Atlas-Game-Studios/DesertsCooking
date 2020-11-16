@@ -4,15 +4,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import me.desertdweller.desertscooking.customfood.Station;
 
-import org.bukkit.Location;
-import org.bukkit.block.Block;
-
 public class FurnaceLighter extends BukkitRunnable{
-	private static Main plugin = Main.getPlugin(Main.class);
+	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
 	
 	@Override
 	public void run() {

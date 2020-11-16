@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.Cooking;
 import net.md_5.bungee.api.ChatColor;
 
 public class IngredientStation implements Listener{
@@ -28,7 +28,7 @@ public class IngredientStation implements Listener{
 	static ItemStack reservedSlot;
 	static ItemStack finalSlot;
 	static ItemStack air = new ItemStack(Material.AIR);
-	private static Plugin plugin = Main.getPlugin(Main.class);
+	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
 	static HashMap<Inventory, Player> openCuttingBoards = new HashMap<Inventory, Player>();
 	
 	

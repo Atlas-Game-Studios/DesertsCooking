@@ -18,7 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.Cooking;
 import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
 import me.desertdweller.desertscooking.events.FoodItemInputEvent;
 import me.desertdweller.desertscooking.events.PlayerCheckStationEvent;
@@ -27,7 +27,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class Station implements Listener {
-	private static Main plugin = Main.getPlugin(Main.class);
+	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
 	public static final String STATION_TYPE_STOVE = "stove";        
 	public static final String STATION_TYPE_OVEN = "oven";
 	public static final String STATION_TYPE_BOILER = "boiler";

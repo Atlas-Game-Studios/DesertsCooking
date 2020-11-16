@@ -14,13 +14,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.Cooking;
 import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
 import net.md_5.bungee.api.ChatColor;
 
 @Deprecated
 public class Oven implements Listener {
-	private static Main plugin = Main.getPlugin(Main.class);
+	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
 	public static final String STATION_TYPE_OVEN = "oven";
 	
 	public static void ovenInteract(Block b, CustomFoodItem foodItem, Player p) {

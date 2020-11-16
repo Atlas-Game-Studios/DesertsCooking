@@ -11,11 +11,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.desertdweller.desertscooking.Main;
+import me.desertdweller.desertscooking.Cooking;
 import net.md_5.bungee.api.ChatColor;
 
 public class Flavor implements Listener{
-	private static Main plugin = Main.getPlugin(Main.class);
+	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
 	public int[] flavorList = new int[6];
 	private static final String[] FLAVORS = new String[6];
 	
