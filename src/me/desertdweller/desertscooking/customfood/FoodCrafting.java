@@ -4,9 +4,9 @@ package me.desertdweller.desertscooking.customfood;
 import java.sql.SQLException;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Furnace;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,7 +28,6 @@ public class FoodCrafting implements Listener {
 				if(stationType == Station.STATION_TYPE_BOILER && !p.hasPermission("cooking.cookingpot")) { //Stops the code if the player does not have permission
 					return;
 				}else if(stationType == Station.STATION_TYPE_OVEN && !p.hasPermission("cooking.oven")) {
-					e.setCancelled(true);
 					return;
 				}else if(stationType == Station.STATION_TYPE_STOVE && !p.hasPermission("cooking.stove")) {
 					return;
@@ -41,7 +40,11 @@ public class FoodCrafting implements Listener {
 					exc.printStackTrace();
 				}
 			}else if(IngredientStation.isIngredientStation(e.getClickedBlock()) && p.hasPermission("cooking.cuttingboard")) {
-				IngredientStation.openIngredientStation(e.getClickedBlock().getLocation(), p);
+				if(e.getClickedBlock().getType().equals(Material.OAK_PRESSURE_PLATE)){
+					IngredientStation.openIngredientStation(e.getClickedBlock().getLocation().add(0, -1, 0), p);
+				}else {
+					IngredientStation.openIngredientStation(e.getClickedBlock().getLocation(), p);
+				}
 				e.setCancelled(true);
 			}else if(e.getClickedBlock().getState() instanceof Furnace && Station.getStationType(e.getClickedBlock().getRelative(BlockFace.UP)) != null ) {
 				e.setCancelled(true);

@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.HumanEntity;
@@ -30,6 +32,7 @@ public class IngredientStation implements Listener{
 	static ItemStack air = new ItemStack(Material.AIR);
 	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
 	static HashMap<Inventory, Player> openCuttingBoards = new HashMap<Inventory, Player>();
+	public static HashMap<Player, Location> cuttingBoardLocations = new HashMap<Player, Location>();
 	
 	
 	public static void openIngredientStation(Location l, Player p) {
@@ -45,6 +48,7 @@ public class IngredientStation implements Listener{
 		
 		p.openInventory(inv);
 		openCuttingBoards.put(inv, p);
+		cuttingBoardLocations.put(p, l);
 	}
 	
 	@EventHandler
@@ -59,15 +63,25 @@ public class IngredientStation implements Listener{
 					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
 					e.getClickedInventory().setItem(e.getSlot(), air);
 					curInv = updateResult(curInv);
+					Player p = (Player) e.getWhoClicked();
+					p.playSound(p.getLocation(), Sound.BLOCK_WOOL_BREAK, 1, 1.8f);
 				}
 			//Checks to see if it is the result slot.
 			}else if(e.getSlot() == 34) {
 				if(e.getCurrentItem() != air) { //If the result slot is not empty, clear cutting board and give the result item.
-					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
-
 					resetIngredients((Player) e.getWhoClicked(), e.getClickedInventory());
 					
+					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
 					curInv = updateResult(curInv);
+					Player p = (Player) e.getWhoClicked();
+					p.playSound(p.getLocation(), Sound.UI_TOAST_OUT, 1, 2f);
+					
+					for(int i = 0; i <360; i+=10){
+						Location flameloc = cuttingBoardLocations.get(p).clone();
+						flameloc.add(0.5f + Math.cos(i)*0.7f, 1, 0.5f + Math.sin(i)*0.7f);
+						p.getWorld().spawnParticle(Particle.CRIMSON_SPORE, flameloc, 3, 0, 1, 0, 0.005f);
+						System.out.println(flameloc);
+					}
 				}
 			}
 			e.setCancelled(true);
@@ -86,6 +100,8 @@ public class IngredientStation implements Listener{
 						topInv.setItem(10, movedItem);
 						e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 						topInv = updateResult(topInv);
+						Player p = (Player) e.getWhoClicked();
+						p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1);
 					//If the food item has any secondary ingredients, but not main.
 					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients > 0) {
 						//checks to see if the available slots are open.
@@ -95,18 +111,24 @@ public class IngredientStation implements Listener{
 							topInv.setItem(13, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_BREAK, 1, 1);
 						}else if(topInv.getItem(14) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
 							movedItem.setAmount(1);
 							topInv.setItem(14, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_BREAK, 1, 1);
 						}else if(topInv.getItem(15) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
 							movedItem.setAmount(1);
 							topInv.setItem(15, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_BREAK, 1, 1);
 						}
 					//Checks to see if the food item has any spices, but no secondary or main ingredients.
 					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients == 0 && foodItem.spices > 0) {
@@ -117,28 +139,37 @@ public class IngredientStation implements Listener{
 							topInv.setItem(28, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1.5f);
 						}else if(topInv.getItem(29) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
 							movedItem.setAmount(1);
 							topInv.setItem(29, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1.5f);
 						}else if(topInv.getItem(30) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
 							movedItem.setAmount(1);
 							topInv.setItem(30, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1.5f);
 						}else if(topInv.getItem(31) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
 							movedItem.setAmount(1);
 							topInv.setItem(31, movedItem);
 							e.getClickedInventory().setItem(e.getSlot(), subtractFromItemStack(e.getCurrentItem(), 1));
 							topInv = updateResult(topInv);
+							Player p = (Player) e.getWhoClicked();
+							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1.5f);
 						}
-					}else {
-						//Play Failed Sound
 					}
+				}else {
+					Player p = (Player) e.getWhoClicked();
+					p.playSound(p.getLocation(), Sound.ENTITY_VEX_HURT, 1, 2f);
 				}
 				e.setCancelled(true);
 			}
@@ -345,6 +376,7 @@ public class IngredientStation implements Listener{
 		// If the inventory clicked is a crafting inventory.
 		if(openCuttingBoards.containsKey(curInv)) {
 			openCuttingBoards.remove(curInv);
+			cuttingBoardLocations.remove(e.getPlayer());
 			HumanEntity p = e.getPlayer();
 			if(curInv.getItem(10) != null)
 				p.getInventory().addItem(curInv.getItem(10));
