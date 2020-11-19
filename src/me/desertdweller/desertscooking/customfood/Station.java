@@ -96,12 +96,12 @@ public class Station implements Listener {
 				
 				return STATION_TYPE_STOVE;
 			}
-		}else if(b.getType().equals(Material.FURNACE) && b.getRelative(BlockFace.UP).getType().equals(Material.IRON_TRAPDOOR)) {
+		}else if(b.getType().equals(Material.SMOKER) && b.getRelative(BlockFace.UP).getType().equals(Material.IRON_TRAPDOOR)) {
 			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.FIRE) || b.getRelative(BlockFace.DOWN).getType().equals(Material.LAVA)){
 				return STATION_TYPE_OVEN;
 			}
 		}else if(b.getType().equals(Material.CAULDRON) && b.getRelative(BlockFace.UP).getType().equals(Material.TRIPWIRE_HOOK)) {
-			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.FURNACE)){
+			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.BLAST_FURNACE)){
 				Levelled caul = (Levelled) b.getBlockData();
 				if(caul.getLevel() == caul.getMaximumLevel()) {
 					return STATION_TYPE_BOILER;
