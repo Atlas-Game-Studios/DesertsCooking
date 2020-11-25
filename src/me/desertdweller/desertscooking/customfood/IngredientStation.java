@@ -77,10 +77,9 @@ public class IngredientStation implements Listener{
 					p.playSound(p.getLocation(), Sound.UI_TOAST_OUT, 1, 2f);
 					
 					for(int i = 0; i <360; i+=10){
-						Location flameloc = cuttingBoardLocations.get(p).clone();
-						flameloc.add(0.5f + Math.cos(i)*0.7f, 1, 0.5f + Math.sin(i)*0.7f);
-						p.getWorld().spawnParticle(Particle.CRIMSON_SPORE, flameloc, 3, 0, 1, 0, 0.005f);
-						System.out.println(flameloc);
+						Location loc = cuttingBoardLocations.get(p).clone();
+						loc.add(0.5f + Math.cos(i)*0.7f, 1, 0.5f + Math.sin(i)*0.7f);
+						p.getWorld().spawnParticle(Particle.CRIMSON_SPORE, loc, 3, 0, 1, 0, 0.005f);
 					}
 				}
 			}
