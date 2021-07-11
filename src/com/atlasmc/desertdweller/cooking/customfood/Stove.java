@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +14,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.desertdweller.desertscooking.Cooking;
-import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
+import com.atlasmc.desertdweller.cooking.Cooking;
+import com.atlasmc.desertdweller.cooking.events.FoodItemFinishedEvent;
+
 import net.md_5.bungee.api.ChatColor;
 
 @Deprecated

@@ -1,11 +1,11 @@
-package me.desertdweller.desertscooking.events;
+package com.atlasmc.desertdweller.cooking.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import me.desertdweller.desertscooking.customfood.CustomFoodItem;
+import com.atlasmc.desertdweller.cooking.customfood.CustomFoodItem;
 
 public class FoodItemFinishedEvent extends Event implements Cancellable{
 	private CustomFoodItem foodItem;

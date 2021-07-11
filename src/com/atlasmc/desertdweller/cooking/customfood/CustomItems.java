@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

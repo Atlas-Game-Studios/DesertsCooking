@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 
 import java.sql.SQLException;

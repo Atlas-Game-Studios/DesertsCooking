@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.listeners;
+package com.atlasmc.desertdweller.cooking.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,11 +12,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.atlasmc.desertdweller.cooking.customfood.CustomFoodItem;
+import com.atlasmc.desertdweller.cooking.events.CustomFoodEatenEvent;
 import com.atlasmc.eatingapi.EatingAPI;
 
 import de.tr7zw.nbtapi.NBTItem;
-import me.desertdweller.desertscooking.customfood.CustomFoodItem;
-import me.desertdweller.desertscooking.events.CustomFoodEatenEvent;
 
 public class FoodEating implements Listener{
 	

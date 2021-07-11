@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import me.desertdweller.desertscooking.Cooking;
+import com.atlasmc.desertdweller.cooking.Cooking;
+
 import net.md_5.bungee.api.ChatColor;
 
 public class Flavor implements Listener{

@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-import me.desertdweller.desertscooking.Cooking;
+import com.atlasmc.desertdweller.cooking.Cooking;
+
 import net.md_5.bungee.api.ChatColor;
 
 public class IngredientStation implements Listener{

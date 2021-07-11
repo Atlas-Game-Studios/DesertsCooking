@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package com.atlasmc.desertdweller.cooking;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -6,8 +6,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.desertdweller.desertscooking.customfood.CustomFoodItem;
-import me.desertdweller.desertscooking.customfood.Flavor;
+import com.atlasmc.desertdweller.cooking.customfood.CustomFoodItem;
+import com.atlasmc.desertdweller.cooking.customfood.Flavor;
+
 import net.md_5.bungee.api.ChatColor;
 
 public class Commands implements CommandExecutor {

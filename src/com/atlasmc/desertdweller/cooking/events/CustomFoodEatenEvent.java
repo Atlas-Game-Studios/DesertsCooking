@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.events;
+package com.atlasmc.desertdweller.cooking.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;

@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package com.atlasmc.desertdweller.cooking;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,11 +13,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
-import me.desertdweller.desertscooking.customfood.Flavor;
-import me.desertdweller.desertscooking.customfood.FoodCrafting;
-import me.desertdweller.desertscooking.customfood.IngredientStation;
-import me.desertdweller.desertscooking.customfood.Station;
-import me.desertdweller.desertscooking.listeners.FoodEating;
+import com.atlasmc.desertdweller.cooking.customfood.Flavor;
+import com.atlasmc.desertdweller.cooking.customfood.FoodCrafting;
+import com.atlasmc.desertdweller.cooking.customfood.IngredientStation;
+import com.atlasmc.desertdweller.cooking.customfood.Station;
+import com.atlasmc.desertdweller.cooking.listeners.FoodEating;
+
 import net.md_5.bungee.api.ChatColor;
 
 public class Cooking extends JavaPlugin implements Listener{

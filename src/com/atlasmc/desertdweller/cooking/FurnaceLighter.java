@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking;
+package com.atlasmc.desertdweller.cooking;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.desertdweller.desertscooking.customfood.Station;
+import com.atlasmc.desertdweller.cooking.customfood.Station;
 
 public class FurnaceLighter extends BukkitRunnable{
 	private static Cooking plugin = Cooking.getPlugin(Cooking.class);

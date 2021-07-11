@@ -1,4 +1,4 @@
-package me.desertdweller.desertscooking.customfood;
+package com.atlasmc.desertdweller.cooking.customfood;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +18,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-import me.desertdweller.desertscooking.Cooking;
-import me.desertdweller.desertscooking.events.FoodItemFinishedEvent;
-import me.desertdweller.desertscooking.events.FoodItemInputEvent;
-import me.desertdweller.desertscooking.events.PlayerCheckStationEvent;
+import com.atlasmc.desertdweller.cooking.Cooking;
+import com.atlasmc.desertdweller.cooking.events.FoodItemFinishedEvent;
+import com.atlasmc.desertdweller.cooking.events.FoodItemInputEvent;
+import com.atlasmc.desertdweller.cooking.events.PlayerCheckStationEvent;
+
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
