@@ -341,6 +341,8 @@ public class StationUpdater extends BukkitRunnable{
 			return;
 		}
 		
+		Station.removeStation(location);
+		
 	}
 	
 	private void breakStation() {

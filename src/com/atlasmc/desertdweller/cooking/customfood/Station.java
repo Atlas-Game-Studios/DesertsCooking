@@ -61,6 +61,10 @@ public class Station implements Listener {
 		
 	}
 	
+	public static void removeStation(Location l) {
+		activeStations.remove(l);
+	}
+	
 	
 	
 	public static void stationInteract(Block b, CustomFoodItem foodItem, Player p, String stationType) throws SQLException {

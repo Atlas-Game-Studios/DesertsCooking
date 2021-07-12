@@ -30,8 +30,7 @@ public class Cooking extends JavaPlugin implements Listener{
 		getServer().getPluginManager().registerEvents(new FoodEating(), this);
 		getServer().getPluginManager().registerEvents(new Flavor(), this); 
 		getServer().getPluginManager().registerEvents(new IngredientStation(), this); 
-		getServer().getPluginManager().registerEvents(new Station(), this); 
-		furnaceChecker = new FurnaceLighter().runTaskTimer(this,0,1200);
+		getServer().getPluginManager().registerEvents(new Station(null, 0), this); 
 	}
 	
 	@Override
