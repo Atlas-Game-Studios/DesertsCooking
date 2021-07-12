@@ -88,49 +88,37 @@ public class Flavor implements Listener{
 		flavorList[5] += addedFlavor.getFlavor(5);
 	}
 	
-	public float efficiency(Player p) {
-		try {
-			//Grabs player pref data
-			PreparedStatement statement = plugin.getConnection().prepareStatement("SELECT * FROM " + plugin.getConfig().getString("tablename2") + " WHERE uuid=?");
-			statement.setString(1, p.getUniqueId().toString());
-			ResultSet playerData = statement.executeQuery();
-			Float satisfaction = (float) 0.4;
-			if(playerData.next()) {
-				//Compares player prefs, to food tastes
-				int pref1 = playerData.getInt(2);   
-				int pref2 = playerData.getInt(3); 
-				int strongestTaste = 0;
-				int[] strongestFlavorIds = new int[2];
-				//finds strongest flavor
-				for(int i = 0; i < 6; i++) {
-					if(flavorList[i] > strongestTaste) {
-						strongestTaste = flavorList[i];
-						strongestFlavorIds[0] = i;
-					}
-				}
-				//finds second strongest flavor
-				strongestTaste = 0;
-				for(int i = 0; i < 6; i++) {
-					if(i != strongestFlavorIds[0] && flavorList[i] > strongestTaste) {
-						strongestTaste = flavorList[i];
-						strongestFlavorIds[1] = i;
-					}
-				}
-				//If the main preference is one of the 2 strongest flavors add 40% efficiency
-				if(pref1 == strongestFlavorIds[0] || pref1 == strongestFlavorIds[1]) {
-					satisfaction += (float) 0.4;
-				}
-				//if the second preference is one of the 2 strongest flavors add 20% efficiency
-				if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
-					satisfaction += (float) 0.2;
-				}
+	public float efficiency(FlavorPreference pref) {
+		Float satisfaction = (float) 0.4;
+		//Compares player prefs, to food tastes
+		int pref1 = pref.getFlavor1();   
+		int pref2 = pref.getFlavor2();
+		int strongestTaste = 0;
+		int[] strongestFlavorIds = new int[2];
+		//finds strongest flavor
+		for(int i = 0; i < 6; i++) {
+			if(flavorList[i] > strongestTaste) {
+				strongestTaste = flavorList[i];
+				strongestFlavorIds[0] = i;
 			}
-			return satisfaction;
-		}catch(SQLException e){
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error getting player preferences from MySQL table!");
-	       	e.printStackTrace();
 		}
-		return 0;
+		//finds second strongest flavor
+		strongestTaste = 0;
+		for(int i = 0; i < 6; i++) {
+			if(i != strongestFlavorIds[0] && flavorList[i] > strongestTaste) {
+				strongestTaste = flavorList[i];
+				strongestFlavorIds[1] = i;
+			}
+		}
+		//If the main preference is one of the 2 strongest flavors add 40% efficiency
+		if(pref1 == strongestFlavorIds[0] || pref1 == strongestFlavorIds[1]) {
+			satisfaction += (float) 0.4;
+		}
+		//if the second preference is one of the 2 strongest flavors add 20% efficiency
+		if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
+			satisfaction += (float) 0.2;
+		}
+		return satisfaction;
 	}
 	
 	public void eatenPlayerMessage(Player p) {
@@ -178,48 +166,22 @@ public class Flavor implements Listener{
 	}
 	
 	public String playerPreferencesMessage(Player p) {
-		String output = "";
-		try {
-			PreparedStatement statement = plugin.getConnection().prepareStatement("SELECT * FROM " + plugin.getConfig().getString("tablename2") + " WHERE uuid=?");
-			statement.setString(1, p.getUniqueId().toString());
-			ResultSet playerData = statement.executeQuery();
-			if(playerData.next()) {
-				int pref1 = playerData.getInt(2);   
-				int pref2 = playerData.getInt(3); 
-				return ChatColor.GOLD + "Your main preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref1] + ChatColor.GOLD + ", and your second preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref2] + ChatColor.GOLD + ".";
-			}else {
-				System.out.println("Did not find player asking for command!");
-			}
-		}catch(SQLException e){
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error getting player preferences from MySQL table!");
-	       	e.printStackTrace();
-		}
-		return output;
+		int pref1 = Cooking.preferences.get(p.getUniqueId()).flavor1;   
+		int pref2 = Cooking.preferences.get(p.getUniqueId()).flavor2;   
+		return ChatColor.GOLD + "Your main preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref1] + ChatColor.GOLD + ", and your second preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref2] + ChatColor.GOLD + ".";
 	}
 
 	@EventHandler
 	private void generatePrefs(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		try {
-			PreparedStatement statement = plugin.getConnection().prepareStatement("SELECT * FROM " + plugin.getConfig().getString("tablename2") + " WHERE uuid=?");
-			statement.setString(1, p.getUniqueId().toString());
-			ResultSet playerData = statement.executeQuery();
-			if(!playerData.next()) {
+			if(!Cooking.preferences.keySet().contains(p.getUniqueId())) {
 				int pref1 = randomIntInRange(0,5);
 				int pref2 = pref1;
 				while(pref2 == pref1) {
 					pref2 = randomIntInRange(0,5);
 				}
-				statement = plugin.getConnection().prepareStatement("INSERT INTO " + plugin.getConfig().getString("tablename2") + " (uuid,preference1,preference2) VALUES (?,?,?)");
-				statement.setString(1, p.getUniqueId().toString());
-				statement.setInt(2, pref1);
-				statement.setInt(3, pref2);
-				statement.executeUpdate();
+				Cooking.preferences.put(p.getUniqueId(), new FlavorPreference(pref1, pref2));
 			}
-		}catch(SQLException ex) {
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error getting player preferences from MySQL table!");
-	       	ex.printStackTrace();
-		}
 	}
 	
 	private int randomIntInRange(int min, int max) {
