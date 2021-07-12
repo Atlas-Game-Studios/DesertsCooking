@@ -1,11 +1,7 @@
 package com.atlasmc.desertdweller.cooking.customfood;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -122,52 +118,42 @@ public class Flavor implements Listener{
 	}
 	
 	public void eatenPlayerMessage(Player p) {
-		try {
-			PreparedStatement statement = plugin.getConnection().prepareStatement("SELECT * FROM " + plugin.getConfig().getString("tablename2") + " WHERE uuid=?");
-			statement.setString(1, p.getUniqueId().toString());
-			ResultSet playerData = statement.executeQuery();
-			if(playerData.next()) {
-				int pref1 = playerData.getInt(2);   
-				int pref2 = playerData.getInt(3); 
-				int strongestTaste = 0;
-				int[] strongestFlavorIds = new int[2];
-				for(int i = 0; i < 6; i++) {
-					if(flavorList[i] > strongestTaste) {
-						strongestTaste = flavorList[i];
-						strongestFlavorIds[0] = i;
-					}
-				}
-				strongestTaste = 0;
-				for(int i = 0; i < 6; i++) {
-					if(i != strongestFlavorIds[0] && flavorList[i] > strongestTaste) {
-						strongestTaste = flavorList[i];
-						strongestFlavorIds[1] = i;
-					}
-				}
-				p.sendMessage(ChatColor.GRAY + "The item you just ate tasted " + ChatColor.GOLD + FLAVORS[strongestFlavorIds[0]] + ChatColor.GRAY + " and " + ChatColor.GOLD + FLAVORS[strongestFlavorIds[1]] + ChatColor.GRAY + ".");
-				if(pref1 == strongestFlavorIds[0] || pref1 == strongestFlavorIds[1]) {
-					if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
-						p.sendMessage(ChatColor.GRAY + "This matches both of your flavor preferences, giving it 100% effectiveness!");
-					}else {
-						p.sendMessage(ChatColor.GRAY + "This matches only your main flavor preference, giving it only 80% effectiveness.");
-					}
-				}else {
-					if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
-						p.sendMessage(ChatColor.GRAY + "This matches only your secondary flavor preference, giving it only 60% effectiveness.");
-					}else {
-						p.sendMessage(ChatColor.GRAY + "This matches none of your flavor preferences, giving it 40% effectiveness!");
-					}
-				}
+		int pref1 = Cooking.preferences.get(p.getUniqueId()).getFlavor1();
+		int pref2 = Cooking.preferences.get(p.getUniqueId()).getFlavor2(); 
+		int strongestTaste = 0;
+		int[] strongestFlavorIds = new int[2];
+		for(int i = 0; i < 6; i++) {
+			if(flavorList[i] > strongestTaste) {
+				strongestTaste = flavorList[i];
+				strongestFlavorIds[0] = i;
 			}
-		}catch(SQLException e){
-			Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error getting player preferences from MySQL table!");
-	       	e.printStackTrace();
+		}
+		strongestTaste = 0;
+		for(int i = 0; i < 6; i++) {
+			if(i != strongestFlavorIds[0] && flavorList[i] > strongestTaste) {
+				strongestTaste = flavorList[i];
+				strongestFlavorIds[1] = i;
+			}
+		}
+		p.sendMessage(ChatColor.GRAY + "The item you just ate tasted " + ChatColor.GOLD + FLAVORS[strongestFlavorIds[0]] + ChatColor.GRAY + " and " + ChatColor.GOLD + FLAVORS[strongestFlavorIds[1]] + ChatColor.GRAY + ".");
+		if(pref1 == strongestFlavorIds[0] || pref1 == strongestFlavorIds[1]) {
+			if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
+				p.sendMessage(ChatColor.GRAY + "This matches both of your flavor preferences, giving it 100% effectiveness!");
+			}else {
+				p.sendMessage(ChatColor.GRAY + "This matches only your main flavor preference, giving it only 80% effectiveness.");
+			}
+		}else {
+			if(pref2 == strongestFlavorIds[0] || pref2 == strongestFlavorIds[1]) {
+				p.sendMessage(ChatColor.GRAY + "This matches only your secondary flavor preference, giving it only 60% effectiveness.");
+			}else {
+				p.sendMessage(ChatColor.GRAY + "This matches none of your flavor preferences, giving it 40% effectiveness!");
+			}
 		}
 	}
 	
 	public String playerPreferencesMessage(Player p) {
-		int pref1 = Cooking.preferences.get(p.getUniqueId()).flavor1;   
-		int pref2 = Cooking.preferences.get(p.getUniqueId()).flavor2;   
+		int pref1 = Cooking.preferences.get(p.getUniqueId()).getFlavor1();   
+		int pref2 = Cooking.preferences.get(p.getUniqueId()).getFlavor2();   
 		return ChatColor.GOLD + "Your main preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref1] + ChatColor.GOLD + ", and your second preference is for things to taste " + ChatColor.DARK_AQUA + FLAVORS[pref2] + ChatColor.GOLD + ".";
 	}
 

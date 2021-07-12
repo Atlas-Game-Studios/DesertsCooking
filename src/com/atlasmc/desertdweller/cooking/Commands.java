@@ -27,7 +27,7 @@ public class Commands implements CommandExecutor {
 				p.sendMessage(ChatColor.GOLD + "Food value: " + new CustomFoodItem(item).food);
 				p.sendMessage(ChatColor.GOLD + "Saturation value: " + new CustomFoodItem(item).saturation);
 				p.sendMessage(ChatColor.GOLD + "Experience value: " + new CustomFoodItem(item).experience);
-				p.sendMessage(ChatColor.GOLD + "Your efficiency: " + new CustomFoodItem(item).flavor.efficiency(p));
+				p.sendMessage(ChatColor.GOLD + "Your efficiency: " + new CustomFoodItem(item).flavor.efficiency(Cooking.preferences.get(p.getUniqueId())));
 				
 				return true;
 			}else {
