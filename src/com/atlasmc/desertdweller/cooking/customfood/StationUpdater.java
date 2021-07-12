@@ -346,7 +346,9 @@ public class StationUpdater extends BukkitRunnable{
 	}
 	
 	private void breakStation() {
-		Station station = Station.g
+		Station station = Station.getActiveStation(location);
+		location.getWorld().dropItemNaturally(location, station.getCookingItem().getItemStack());
+		Station.removeStation(location);
 	}
 }
 
