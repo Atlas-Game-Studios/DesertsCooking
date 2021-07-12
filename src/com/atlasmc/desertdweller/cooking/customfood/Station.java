@@ -3,6 +3,7 @@ package com.atlasmc.desertdweller.cooking.customfood;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,9 +30,17 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class Station implements Listener {
 	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
-	public static final String STATION_TYPE_STOVE = "stove";        
-	public static final String STATION_TYPE_OVEN = "oven";
-	public static final String STATION_TYPE_BOILER = "boiler";
+	private static HashMap<Location, Station> activeStations;
+	
+	private CustomFoodItem cookingItem;
+	private long timeBegan;
+	
+	
+	public static void stationInteract(Block b, Player p) {
+		
+	}
+	
+	
 	
 	public static void stationInteract(Block b, CustomFoodItem foodItem, Player p, String stationType) throws SQLException {
 		PreparedStatement statement = plugin.getConnection().prepareStatement("SELECT * FROM " + plugin.getConfig().getString("tablename1") + " WHERE location=?");
@@ -91,25 +100,34 @@ public class Station implements Listener {
 		return null;
 	}
 	
-	public static String getStationType(Block b) {
-		if(b.getType().equals(Material.IRON_TRAPDOOR)){
-			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.FIRE) || b.getRelative(BlockFace.DOWN).getType().equals(Material.LAVA)){
-				
-				return STATION_TYPE_STOVE;
-			}
-		}else if(b.getType().equals(Material.SMOKER) && b.getRelative(BlockFace.UP).getType().equals(Material.IRON_TRAPDOOR)) {
-			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.FIRE) || b.getRelative(BlockFace.DOWN).getType().equals(Material.LAVA)){
-				return STATION_TYPE_OVEN;
-			}
-		}else if(b.getType().equals(Material.CAULDRON) && b.getRelative(BlockFace.UP).getType().equals(Material.TRIPWIRE_HOOK)) {
-			if(b.getRelative(BlockFace.DOWN).getType().equals(Material.BLAST_FURNACE)){
-				Levelled caul = (Levelled) b.getBlockData();
-				if(caul.getLevel() == caul.getMaximumLevel()) {
-					return STATION_TYPE_BOILER;
+	public static Boolean isStationCenter(Block b) {
+		if(b.getType().equals(Material.SMOKER)) {
+			if(!b.getRelative(BlockFace.UP).getType().equals(Material.COBBLESTONE_WALL) || !b.getRelative(BlockFace.DOWN).getType().equals(Material.CAMPFIRE))
+				return false;
+			if(b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
+					return true;
+				}
+			}else if(b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
+					return true;
+				}
+			}else if(b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
+					return true;
+				}
+			}else if(b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
+					return true;
 				}
 			}
+			
 		}
-		return null;
+		return false;
 	}
 	
 	@EventHandler

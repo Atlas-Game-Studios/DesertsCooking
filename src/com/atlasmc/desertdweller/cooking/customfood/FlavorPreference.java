@@ -1,8 +1,8 @@
 package com.atlasmc.desertdweller.cooking.customfood;
 
 public class FlavorPreference {
-	int flavor1;
-	int flavor2;
+	private int flavor1;
+	private int flavor2;
 	
 	public FlavorPreference(int flavor1, int flavor2) {
 		this.flavor1 = flavor1;
