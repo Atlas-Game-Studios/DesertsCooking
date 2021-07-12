@@ -346,7 +346,7 @@ public class StationUpdater extends BukkitRunnable{
 	}
 	
 	private void breakStation() {
-		
+		Station station = Station.g
 	}
 }
 

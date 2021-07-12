@@ -65,6 +65,10 @@ public class Station implements Listener {
 		activeStations.remove(l);
 	}
 	
+	public static Station getActiveStation(Location l) {
+		return activeStations.get(l);
+	}
+	
 	
 	
 	public static void stationInteract(Block b, CustomFoodItem foodItem, Player p, String stationType) throws SQLException {
