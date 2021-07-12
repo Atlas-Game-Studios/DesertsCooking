@@ -9,9 +9,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 import com.atlasmc.desertdweller.cooking.customfood.Flavor;
 import com.atlasmc.desertdweller.cooking.customfood.FlavorPreference;
-import com.atlasmc.desertdweller.cooking.customfood.FoodCrafting;
 import com.atlasmc.desertdweller.cooking.customfood.IngredientStation;
 import com.atlasmc.desertdweller.cooking.customfood.Station;
+import com.atlasmc.desertdweller.cooking.listeners.FoodCrafting;
 import com.atlasmc.desertdweller.cooking.listeners.FoodEating;
 
 public class Cooking extends JavaPlugin implements Listener{

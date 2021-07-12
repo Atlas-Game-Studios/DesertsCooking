@@ -36,6 +36,27 @@ public class Station implements Listener {
 	private long timeBegan;
 	
 	
+	public Station(CustomFoodItem cookingItem, long timeBegan) {
+		this.cookingItem = cookingItem;
+		this.timeBegan = timeBegan;
+	}
+	
+	public CustomFoodItem getCookingItem() {
+		return cookingItem;
+	}
+	
+	public long getTimeBegan() {
+		return timeBegan;
+	}
+	
+	public static void startNewStation(Location l, Station s) {
+		activeStations.put(l, s);
+	}
+	
+	public static void loadStation(Location l, Station s) {
+		activeStations.put(l, s);
+	}
+	
 	public static void stationInteract(Block b, Player p) {
 		
 	}
@@ -100,34 +121,33 @@ public class Station implements Listener {
 		return null;
 	}
 	
-	public static Boolean isStationCenter(Block b) {
+	public static BlockFace getStationFacing(Block b) {
 		if(b.getType().equals(Material.SMOKER)) {
 			if(!b.getRelative(BlockFace.UP).getType().equals(Material.COBBLESTONE_WALL) || !b.getRelative(BlockFace.DOWN).getType().equals(Material.CAMPFIRE))
-				return false;
+				return null;
 			if(b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
 				Levelled cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-					return true;
+					return BlockFace.SOUTH;
 				}
 			}else if(b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
 				Levelled cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-					return true;
+					return BlockFace.WEST;
 				}
 			}else if(b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
 				Levelled cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-					return true;
+					return BlockFace.NORTH;
 				}
 			}else if(b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
 				Levelled cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-					return true;
+					return BlockFace.EAST;
 				}
 			}
-			
 		}
-		return false;
+		return null;
 	}
 	
 	@EventHandler
@@ -151,13 +171,6 @@ public class Station implements Listener {
 			}
 		}else if(e.getFoodItem().item.getType().equals(Material.CLOCK)) {
 			sendTimeCooking(e.getPlayer(),Long.toString(e.getTime()/60000));
-		}else if(e.getFoodItem().item.getType().equals(Material.AIR) && e.getTime() > plugin.getConfig().getLong("maxCookTime")){
-			try {
-				stationGrab(e.getBlock(), e.getStationType());
-			} catch (SQLException exc) {
-				exc.printStackTrace();
-			}
-			sendFailedTakout(e.getPlayer());
 		}else {
 			sendCookingStationActive(e.getPlayer());
 		}
