@@ -28,6 +28,25 @@ public class MeleeDamageBoost extends CustomEffect implements Listener{
 		}
 	}
 	
+	public MeleeDamageBoost(int tier, Player p) {
+		this.player = p;
+		this.duration = 20;
+		this.effect = CookingEffect.MELEEDAMAGEBOOST;
+		this.type = EffectType.BUFF;
+		this.tier = tier;
+		this.name = "Champion's Might";
+		switch(tier){
+		case 1:
+			this.desc = "General melee damage increased by 10%.";
+			break;
+		case 2:
+			this.desc = "General melee damage increased by 15%.";
+			break;
+		case 3:
+			this.desc = "General melee damage increased by 20%.";
+			break;
+		}
+	}
 	
 	@EventHandler
 	public static void onPlayerDamage(EntityDamageByEntityEvent e) {

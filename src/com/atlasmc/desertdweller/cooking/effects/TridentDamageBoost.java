@@ -29,6 +29,26 @@ public class TridentDamageBoost extends CustomEffect implements Listener{
 		}
 	}
 	
+	public TridentDamageBoost(int tier, Player p) {
+		this.player = p;
+		this.duration = 30;
+		this.effect = CookingEffect.TRIDENTDAMAGEBOOST;
+		this.type = EffectType.BUFF;
+		this.tier = tier;
+		this.name = "tridentDamageBoost";
+		switch(tier){
+		case 1:
+			this.desc = "Damage done by tridents is increased by 5%.";
+			break;
+		case 2:
+			this.desc = "Damage done by tridents is increased by 15%.";
+			break;
+		case 3:
+			this.desc = "Damage done by tridents is increased by 20%.";
+			break;
+		}
+	}
+	
 	@EventHandler
 	public static void onPlayerDamage(EntityDamageByEntityEvent e) {
 		if(e.getDamager() instanceof Player) {
