@@ -11,8 +11,8 @@ import com.atlasmc.desertdweller.cooking.customfood.Flavor;
 import com.atlasmc.desertdweller.cooking.customfood.FlavorPreference;
 import com.atlasmc.desertdweller.cooking.customfood.Station;
 import com.atlasmc.desertdweller.cooking.customfood.StationGUI;
-import com.atlasmc.desertdweller.cooking.listeners.FoodCrafting;
 import com.atlasmc.desertdweller.cooking.listeners.FoodEating;
+import com.atlasmc.desertdweller.cooking.listeners.PlayerInteraction;
 
 public class Cooking extends JavaPlugin implements Listener{
 	@SuppressWarnings("unused")
@@ -28,10 +28,10 @@ public class Cooking extends JavaPlugin implements Listener{
 		saveDefaultConfig();
 		getConfig();
 		preferences = DataHandler.loadPreferences();
-		getServer().getPluginManager().registerEvents(new FoodCrafting(),this);
 		getServer().getPluginManager().registerEvents(new FoodEating(), this);
 		getServer().getPluginManager().registerEvents(new Flavor(), this); 
 		getServer().getPluginManager().registerEvents(new StationGUI(), this); 
+		getServer().getPluginManager().registerEvents(new PlayerInteraction(), this); 
 		getServer().getPluginManager().registerEvents(new Station(null, 0), this); 
 	}
 	

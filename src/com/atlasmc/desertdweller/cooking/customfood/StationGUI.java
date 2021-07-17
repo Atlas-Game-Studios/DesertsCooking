@@ -30,6 +30,7 @@ public class StationGUI implements Listener{
 	static ItemStack air = new ItemStack(Material.AIR);
 	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
 	static HashMap<Inventory, Player> openGUIs = new HashMap<Inventory, Player>();
+	static HashMap<Player, Location> gUILocations = new HashMap<Player, Location>();
 	
 	
 	public static void openIngredientGUI(Location l, Player p) {
@@ -44,6 +45,7 @@ public class StationGUI implements Listener{
 		inv.setContents(contents);
 		
 		p.openInventory(inv);
+		gUILocations.put(p, l);
 		openGUIs.put(inv, p);
 	}
 	
@@ -64,11 +66,12 @@ public class StationGUI implements Listener{
 				}
 			//Checks to see if it is the result slot.
 			}else if(e.getSlot() == 34) {
-				if(e.getCurrentItem() != air) { //If the result slot is not empty, clear cutting board and give the result item.
+				if(e.getCurrentItem() != air && e.getClickedInventory().getItem(10).getType().equals(Material.AIR)) { //If the result slot is not empty, and the main slot has something, activate the station.
 					resetIngredients((Player) e.getWhoClicked(), e.getClickedInventory());
 					
-					e.getWhoClicked().getInventory().addItem(e.getCurrentItem());
-					curInv = updateResult(curInv);
+					Station.startNewStation(gUILocations.get(e.getWhoClicked()), new Station(new CustomFoodItem(e.getCurrentItem()), System.currentTimeMillis()));
+					e.getWhoClicked().getOpenInventory().close();
+			
 					Player p = (Player) e.getWhoClicked();
 					p.playSound(p.getLocation(), Sound.UI_TOAST_OUT, 1, 2f);
 					
@@ -87,9 +90,9 @@ public class StationGUI implements Listener{
 			if(topInv != null && openGUIs.containsKey(topInv) && e.getCurrentItem() != null) {
 				CustomFoodItem foodItem = new CustomFoodItem(e.getCurrentItem());
 				//If the food item is not invalid, or already completed.
-				if(!foodItem.invalidItem && !foodItem.completed) {
+				if(!foodItem.isInvalidItem() && !foodItem.isCompleted()) {
 					//If the food item has any main ingredients, and the main slot is open.
-					if(foodItem.mainIngredients == 1 && topInv.getItem(10) == null) {
+					if(foodItem.getMainIngredients() == 1 && topInv.getItem(10) == null) {
 						ItemStack movedItem = e.getCurrentItem().clone();
 						movedItem.setAmount(1);
 						topInv.setItem(10, movedItem);
@@ -98,7 +101,7 @@ public class StationGUI implements Listener{
 						Player p = (Player) e.getWhoClicked();
 						p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_FALL, 1, 1);
 					//If the food item has any secondary ingredients, but not main.
-					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients > 0) {
+					}else if(foodItem.getMainIngredients() == 0 && foodItem.getSecondaryIngredients() > 0) {
 						//checks to see if the available slots are open.
 						if(topInv.getItem(13) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
@@ -126,7 +129,7 @@ public class StationGUI implements Listener{
 							p.playSound(p.getLocation(), Sound.BLOCK_BAMBOO_BREAK, 1, 1);
 						}
 					//Checks to see if the food item has any spices, but no secondary or main ingredients.
-					}else if(foodItem.mainIngredients == 0 && foodItem.secondaryIngredients == 0 && foodItem.spices > 0) {
+					}else if(foodItem.getMainIngredients() == 0 && foodItem.getSecondaryIngredients() == 0 && foodItem.getSpices() > 0) {
 						//Finds next open spice slot, if any.
 						if(topInv.getItem(28) == null) {
 							ItemStack movedItem = e.getCurrentItem().clone();
@@ -198,14 +201,14 @@ public class StationGUI implements Listener{
 		CustomFoodItem resultItemClear = new CustomFoodItem(new ItemStack(inv.getItem(34).getType()));
 		CustomFoodItem food = new CustomFoodItem(item);
 		
-		if(food.trashItem == null)
+		if(food.getTrashItem() == null)
 			return resultTrashAccountedFor;
 		
-		if(resultItemClear.trashItem != null && resultItemClear.trashItem.equals(food.trashItem) && !resultTrashAccountedFor) {
+		if(resultItemClear.getTrashItem() != null && resultItemClear.getTrashItem().equals(food.getTrashItem()) && !resultTrashAccountedFor) {
 			return true;
 		}
 		
-		p.getInventory().addItem(food.trashItem);
+		p.getInventory().addItem(food.getTrashItem());
 		return resultTrashAccountedFor;
 	}
 	
@@ -362,6 +365,7 @@ public class StationGUI implements Listener{
 		Inventory curInv = e.getInventory();
 		// If the inventory clicked is a crafting inventory.
 		if(openGUIs.containsKey(curInv)) {
+			gUILocations.remove(e.getPlayer());
 			openGUIs.remove(curInv);
 			HumanEntity p = e.getPlayer();
 			if(curInv.getItem(10) != null)

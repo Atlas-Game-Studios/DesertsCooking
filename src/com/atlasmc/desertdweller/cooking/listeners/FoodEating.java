@@ -22,7 +22,7 @@ public class FoodEating implements Listener{
 	private void onEat(PlayerItemConsumeEvent e) {
 		ItemStack eatenItem = e.getItem();
 		NBTItem nbti = new NBTItem(eatenItem);
-		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("DesertsCooking") && e.getPlayer().hasPermission("cooking.eat")) {
+		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("Cooking") && e.getPlayer().hasPermission("cooking.eat")) {
 			CustomFoodItem item = new CustomFoodItem(eatenItem);
 			if(item.completed) {
 				e.setCancelled(true);

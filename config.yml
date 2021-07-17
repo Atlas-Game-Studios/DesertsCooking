@@ -1863,14 +1863,4 @@ foodInfoLore: true
 configVersion: 1
 stationTimes: 1
 maxCookTime: 900000
-
-## MySQL setup ##
-host: 
-database: 
-username: 
-password: 
-port: 
-tablename1: DCStationLocals
-tablename2: DCPlayerTastes
-##################
    

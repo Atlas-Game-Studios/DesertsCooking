@@ -1,11 +1,12 @@
 package com.atlasmc.desertdweller.cooking.customfood;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.block.data.Lightable;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.atlasmc.desertdweller.cooking.Cooking;
@@ -57,45 +58,37 @@ public class StationUpdater extends BukkitRunnable{
 		}
 		
 		switch(facing) {
-		case NORTH: 
-			if(!b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
+		case NORTH:
 			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
 			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case EAST:
-			if(!b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
 			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
 			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case SOUTH:
-			if(!b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
 			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
 			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case WEST:
-			if(!b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
 			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
 			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		default:
 			return;
@@ -120,45 +113,37 @@ public class StationUpdater extends BukkitRunnable{
 		}
 		
 		switch(facing) {
-		case NORTH: 
-			if(!b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+		case NORTH:
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(2);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case EAST:
-			if(!b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(2);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case SOUTH:
-			if(!b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(2);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case WEST:
-			if(!b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(2);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		default:
 			return;
@@ -181,37 +166,25 @@ public class StationUpdater extends BukkitRunnable{
 		}
 		
 		switch(facing) {
-		case NORTH: 
-			if(!b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
-			cauldron.setLevel(2);
+		case NORTH:
+			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
+			cauldron.setLevel(3);
+			b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case EAST:
-			if(!b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
-			cauldron.setLevel(2);
+			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
+			cauldron.setLevel(3);
+			b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case SOUTH:
-			if(!b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
-			cauldron.setLevel(2);
+			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
+			cauldron.setLevel(3);
+			b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case WEST:
-			if(!b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(3);
+			b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		default:
 			return;
@@ -235,45 +208,37 @@ public class StationUpdater extends BukkitRunnable{
 		}
 		
 		switch(facing) {
-		case NORTH: 
-			if(!b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+		case NORTH:
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case EAST:
-			if(!b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case SOUTH:
-			if(!b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		case WEST:
-			if(!b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			smoker = (Lightable) b;
+			smoker = (Lightable) b.getBlockData();
 			smoker.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
+			b.setBlockData(smoker);
+			b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
 			break;
 		default:
 			return;
@@ -287,6 +252,7 @@ public class StationUpdater extends BukkitRunnable{
 	private void updateToIdle() {
 		Lightable campfire;
 		Levelled cauldron;
+		ItemFrame frame;
 		Block b = location.getBlock();
 
 		BlockFace facing = Station.getStationFacing(b);
@@ -295,47 +261,56 @@ public class StationUpdater extends BukkitRunnable{
 			breakStation();
 			return;
 		}
+			Station.getActiveStation(location).getCookingItem().finish();
 		
 		switch(facing) {
-		case NORTH: 
-			if(!b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+		case NORTH:
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(0);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
+			frame = (ItemFrame) b.getWorld().spawnEntity(b.getRelative(BlockFace.WEST).getLocation(), EntityType.ITEM_FRAME);
+			frame.setFacingDirection(BlockFace.UP);
+			frame.setVisible(false);
+			frame.setItem(Station.getActiveStation(location).getCookingItem().getItemStack());
 			break;
 		case EAST:
-			if(!b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(0);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
+			frame = (ItemFrame) b.getWorld().spawnEntity(b.getRelative(BlockFace.NORTH).getLocation(), EntityType.ITEM_FRAME);
+			frame.setFacingDirection(BlockFace.UP);
+			frame.setVisible(false);
+			frame.setItem(Station.getActiveStation(location).getCookingItem().getItemStack());
 			break;
 		case SOUTH:
-			if(!b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(0);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).setBlockData(cauldron);
+			frame = (ItemFrame) b.getWorld().spawnEntity(b.getRelative(BlockFace.WEST).getLocation(), EntityType.ITEM_FRAME);
+			frame.setFacingDirection(BlockFace.UP);
+			frame.setVisible(false);
+			frame.setItem(Station.getActiveStation(location).getCookingItem().getItemStack());
 			break;
 		case WEST:
-			if(!b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) || !b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON) || !b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
-				breakStation();
-				return;
-			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(false);
-			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(0);
+			b.getRelative(BlockFace.DOWN).setBlockData(campfire);
+			b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).setBlockData(cauldron);
+			frame = (ItemFrame) b.getWorld().spawnEntity(b.getRelative(BlockFace.SOUTH).getLocation(), EntityType.ITEM_FRAME);
+			frame.setFacingDirection(BlockFace.UP);
+			frame.setVisible(false);
+			frame.setItem(Station.getActiveStation(location).getCookingItem().getItemStack());
 			break;
 		default:
 			return;

@@ -19,21 +19,21 @@ import net.md_5.bungee.api.ChatColor;
 
 public class CustomFoodItem{
 	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
-	public int food;
-	public float saturation;
-	public int experience;
-	public int mainIngredients;
-	public int secondaryIngredients;
-	public int spices;
-	public ItemStack item;
-	public ItemStack trashItem;
-	public boolean invalidItem = true;
-	public boolean completed;
-	public boolean poisoned;
-	public Flavor flavor;
-	public String customMaterial;
-	public String ingList = "";
-	public String configVersion = null;
+	private int food;
+	private float saturation;
+	private int experience;
+	private int mainIngredients;
+	private int secondaryIngredients;
+	private int spices;
+	private ItemStack item;
+	private ItemStack trashItem;
+	private boolean invalidItem = true;
+	private boolean completed;
+	private boolean poisoned;
+	private Flavor flavor;
+	private String customMaterial;
+	private String ingList = "";
+	private String configVersion = null;
 	
 	
 	
@@ -59,7 +59,7 @@ public class CustomFoodItem{
 			return;
 		}
 		NBTItem nbti = new NBTItem(item);
-		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("DesertsCooking")) { //If it is part of this plugin.
+		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("Cooking")) { //If it is part of this plugin.
 			food = nbti.getInteger("Food");
 			saturation = nbti.getFloat("Saturation");
 			experience = nbti.getInteger("Experience");
@@ -136,7 +136,7 @@ public class CustomFoodItem{
 	public ItemStack getItemStack() {
 		ItemStack item = this.item;
 		NBTItem nbti = new NBTItem(item);
-		nbti.setString("Plugin", "DesertsCooking");
+		nbti.setString("Plugin", "Cooking");
 		nbti.setInteger("Food", food);
 		nbti.setFloat("Saturation", saturation);
 		nbti.setInteger("Experience", experience);
@@ -184,7 +184,7 @@ public class CustomFoodItem{
 	public NBTItem getNBTItem() {
 		ItemStack item = this.item;
 		NBTItem nbti = new NBTItem(item);
-		nbti.setString("Plugin", "DesertsCooking");
+		nbti.setString("Plugin", "Cooking");
 		nbti.setInteger("Food", food);
 		nbti.setFloat("Saturation", saturation);
 		nbti.setInteger("Experience", experience);
@@ -308,6 +308,16 @@ public class CustomFoodItem{
 		return true;
 	}
 	
+	public void finish() {
+		this.findTexture();
+		this.completed = true;
+	}
+	
+	public void findTexture() {
+		
+	}
+	
+	@Deprecated
 	public CustomFoodItem findTexture(String stationType) {
 		CustomFoodItem newItem = this;
 		if(plugin.getConfig().contains("vanillaItems." + customMaterial)) {
@@ -359,5 +369,125 @@ public class CustomFoodItem{
 	
 	private void updateFoodItemStats() { //todo
 		
+	}
+
+	public int getFood() {
+		return food;
+	}
+
+	public void setFood(int food) {
+		this.food = food;
+	}
+
+	public float getSaturation() {
+		return saturation;
+	}
+
+	public void setSaturation(float saturation) {
+		this.saturation = saturation;
+	}
+
+	public int getMainIngredients() {
+		return mainIngredients;
+	}
+
+	public void setMainIngredients(int mainIngredients) {
+		this.mainIngredients = mainIngredients;
+	}
+
+	public int getSecondaryIngredients() {
+		return secondaryIngredients;
+	}
+
+	public void setSecondaryIngredients(int secondaryIngredients) {
+		this.secondaryIngredients = secondaryIngredients;
+	}
+
+	public int getSpices() {
+		return spices;
+	}
+
+	public void setSpices(int spices) {
+		this.spices = spices;
+	}
+
+	public ItemStack getItem() {
+		return item;
+	}
+
+	public void setItem(ItemStack item) {
+		this.item = item;
+	}
+
+	public ItemStack getTrashItem() {
+		return trashItem;
+	}
+
+	public void setTrashItem(ItemStack trashItem) {
+		this.trashItem = trashItem;
+	}
+
+	public boolean isInvalidItem() {
+		return invalidItem;
+	}
+
+	public void setInvalidItem(boolean invalidItem) {
+		this.invalidItem = invalidItem;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+	public boolean isPoisoned() {
+		return poisoned;
+	}
+
+	public void setPoisoned(boolean poisoned) {
+		this.poisoned = poisoned;
+	}
+
+	public Flavor getFlavor() {
+		return flavor;
+	}
+
+	public void setFlavor(Flavor flavor) {
+		this.flavor = flavor;
+	}
+
+	public String getCustomMaterial() {
+		return customMaterial;
+	}
+
+	public void setCustomMaterial(String customMaterial) {
+		this.customMaterial = customMaterial;
+	}
+
+	public String getIngList() {
+		return ingList;
+	}
+
+	public void setIngList(String ingList) {
+		this.ingList = ingList;
+	}
+
+	public String getConfigVersion() {
+		return configVersion;
+	}
+
+	public void setConfigVersion(String configVersion) {
+		this.configVersion = configVersion;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
 	}
 }
