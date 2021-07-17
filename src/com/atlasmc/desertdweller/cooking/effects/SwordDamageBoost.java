@@ -12,7 +12,7 @@ public class SwordDamageBoost extends CustomEffect implements Listener{
 	public SwordDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.SWORDDAMAGEBOOST;
+		this.effect = CustomEffectType.SWORDDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "swordDamageBoost";
@@ -33,7 +33,7 @@ public class SwordDamageBoost extends CustomEffect implements Listener{
 	public SwordDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 30;
-		this.effect = CookingEffect.SWORDDAMAGEBOOST;
+		this.effect = CustomEffectType.SWORDDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "swordDamageBoost";
@@ -61,8 +61,8 @@ public class SwordDamageBoost extends CustomEffect implements Listener{
 					!item.equals(Material.STONE_SWORD) && !item.equals(Material.GOLDEN_SWORD) &&
 					!item.equals(Material.WOODEN_SWORD) && !item.equals(Material.NETHERITE_SWORD)) 
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.SWORDDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.SWORDDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.SWORDDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.SWORDDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.05);
 					break;

@@ -7,7 +7,7 @@ public class CustomEffect {
 	protected Player player;
 	protected int duration;
 	protected EffectType type;
-	protected CookingEffect effect;
+	protected CustomEffectType effect;
 	protected int tier;
 	protected String name;
 	protected String desc;
@@ -41,7 +41,7 @@ public class CustomEffect {
 		this.tier = tier;
 	}
 
-	public CookingEffect getEffect() {
+	public CustomEffectType getEffect() {
 		return effect;
 	}
 	

@@ -1,6 +1,6 @@
 package com.atlasmc.desertdweller.cooking.effects;
 
-public enum CookingEffect {
+public enum CustomEffectType {
 	EXPGAINOVERTIME,
 	MELEEDAMAGEBOOST,
 	TRIDENTDAMAGEBOOST,

@@ -11,7 +11,7 @@ public class MeleeDamageBoost extends CustomEffect implements Listener{
 	public MeleeDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.MELEEDAMAGEBOOST;
+		this.effect = CustomEffectType.MELEEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "Champion's Might";
@@ -31,7 +31,7 @@ public class MeleeDamageBoost extends CustomEffect implements Listener{
 	public MeleeDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 20;
-		this.effect = CookingEffect.MELEEDAMAGEBOOST;
+		this.effect = CustomEffectType.MELEEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "Champion's Might";
@@ -54,8 +54,8 @@ public class MeleeDamageBoost extends CustomEffect implements Listener{
 			Player p = (Player) e.getDamager();
 			if(!e.getCause().equals(DamageCause.ENTITY_ATTACK) && !e.getCause().equals(DamageCause.ENTITY_SWEEP_ATTACK))
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.MELEEDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.MELEEDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.MELEEDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.MELEEDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.10);
 					break;

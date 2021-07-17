@@ -12,7 +12,7 @@ public class CrossBowDamageBoost extends CustomEffect implements Listener{
 	public CrossBowDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.CROSSBOWDAMAGEBOOST;
+		this.effect = CustomEffectType.CROSSBOWDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "crossBowDamageBoost";
@@ -33,7 +33,7 @@ public class CrossBowDamageBoost extends CustomEffect implements Listener{
 	public CrossBowDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 20;
-		this.effect = CookingEffect.CROSSBOWDAMAGEBOOST;
+		this.effect = CustomEffectType.CROSSBOWDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "bowDamageBoost";
@@ -59,8 +59,8 @@ public class CrossBowDamageBoost extends CustomEffect implements Listener{
 			Material item = p.getInventory().getItemInMainHand().getType();
 			if(!item.equals(Material.BOW))
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.CROSSBOWDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.CROSSBOWDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.CROSSBOWDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.CROSSBOWDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.1);
 					break;

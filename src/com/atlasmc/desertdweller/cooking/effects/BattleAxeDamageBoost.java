@@ -12,7 +12,7 @@ public class BattleAxeDamageBoost extends CustomEffect implements Listener{
 	public BattleAxeDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.BATTLEAXEDAMAGEBOOST;
+		this.effect = CustomEffectType.BATTLEAXEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "battleAxeDamageBoost";
@@ -32,7 +32,7 @@ public class BattleAxeDamageBoost extends CustomEffect implements Listener{
 	public BattleAxeDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 30;
-		this.effect = CookingEffect.BATTLEAXEDAMAGEBOOST;
+		this.effect = CustomEffectType.BATTLEAXEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "battleAxeDamageBoost";
@@ -60,8 +60,8 @@ public class BattleAxeDamageBoost extends CustomEffect implements Listener{
 					!item.equals(Material.STONE_AXE) && !item.equals(Material.GOLDEN_AXE) &&
 					!item.equals(Material.WOODEN_AXE) && !item.equals(Material.NETHERITE_AXE)) 
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.BATTLEAXEDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.BATTLEAXEDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.BATTLEAXEDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.BATTLEAXEDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.05);
 					break;

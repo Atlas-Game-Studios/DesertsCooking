@@ -9,7 +9,7 @@ public class PassiveRegen extends CustomEffect {
 	public PassiveRegen(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.PASSIVEREGEN;
+		this.effect = CustomEffectType.PASSIVEREGEN;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "passiveRegen";
@@ -29,7 +29,7 @@ public class PassiveRegen extends CustomEffect {
 	public PassiveRegen(int tier, Player p) {
 		this.player = p;
 		this.duration = 60;
-		this.effect = CookingEffect.PASSIVEREGEN;
+		this.effect = CustomEffectType.PASSIVEREGEN;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "passiveRegen";
@@ -75,5 +75,4 @@ public class PassiveRegen extends CustomEffect {
 			ticksPassed += 1;
 		}
 	}
-
 }

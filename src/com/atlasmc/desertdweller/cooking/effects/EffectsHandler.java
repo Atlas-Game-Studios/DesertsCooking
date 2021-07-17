@@ -28,7 +28,7 @@ public class EffectsHandler {
 		AtlasEssentials.instance().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
 	}
 	
-	public static void removeEffect(Player p, CookingEffect e) {
+	public static void removeEffect(Player p, CustomEffectType e) {
 		ArrayList<CustomEffect> effectList = new ArrayList<CustomEffect>();
 		if(effectedPlayers.keySet().contains(p)) {
 			effectList = effectedPlayers.get(p);
@@ -44,7 +44,7 @@ public class EffectsHandler {
 			effectList.remove(targetEffect);
 	}
 	
-	public static CustomEffect getEffect(Player p, CookingEffect e) {
+	public static CustomEffect getEffect(Player p, CustomEffectType e) {
 		ArrayList<CustomEffect> effectList = new ArrayList<CustomEffect>();
 		if(effectedPlayers.keySet().contains(p)) {
 			effectList = effectedPlayers.get(p);

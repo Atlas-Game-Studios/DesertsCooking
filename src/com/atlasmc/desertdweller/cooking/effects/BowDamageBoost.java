@@ -12,7 +12,7 @@ public class BowDamageBoost extends CustomEffect implements Listener{
 	public BowDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.BOWDAMAGEBOOST;
+		this.effect = CustomEffectType.BOWDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "bowDamageBoost";
@@ -33,7 +33,7 @@ public class BowDamageBoost extends CustomEffect implements Listener{
 	public BowDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 20;
-		this.effect = CookingEffect.BOWDAMAGEBOOST;
+		this.effect = CustomEffectType.BOWDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "bowDamageBoost";
@@ -59,8 +59,8 @@ public class BowDamageBoost extends CustomEffect implements Listener{
 			Material item = p.getInventory().getItemInMainHand().getType();
 			if(!item.equals(Material.BOW))
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.BOWDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.BOWDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.BOWDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.BOWDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.1);
 					break;

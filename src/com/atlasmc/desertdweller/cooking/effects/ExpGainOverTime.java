@@ -9,7 +9,7 @@ public class ExpGainOverTime extends CustomEffect {
 	public ExpGainOverTime(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.EXPGAINOVERTIME;
+		this.effect = CustomEffectType.EXPGAINOVERTIME;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "expGainOverTime";
@@ -29,7 +29,7 @@ public class ExpGainOverTime extends CustomEffect {
 	public ExpGainOverTime(int tier, Player p) {
 		this.player = p;
 		this.duration = 60;
-		this.effect = CookingEffect.EXPGAINOVERTIME;
+		this.effect = CustomEffectType.EXPGAINOVERTIME;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "expGainOverTime";

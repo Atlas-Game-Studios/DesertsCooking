@@ -12,7 +12,7 @@ public class SickleDamageBoost extends CustomEffect implements Listener{
 	public SickleDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.SICKLEDAMAGEBOOST;
+		this.effect = CustomEffectType.SICKLEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "sickleDamageBoost";
@@ -32,7 +32,7 @@ public class SickleDamageBoost extends CustomEffect implements Listener{
 	public SickleDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 30;
-		this.effect = CookingEffect.SICKLEDAMAGEBOOST;
+		this.effect = CustomEffectType.SICKLEDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "sickleDamageBoost";
@@ -60,8 +60,8 @@ public class SickleDamageBoost extends CustomEffect implements Listener{
 					!item.equals(Material.STONE_HOE) && !item.equals(Material.GOLDEN_HOE) &&
 					!item.equals(Material.WOODEN_HOE) && !item.equals(Material.NETHERITE_HOE)) 
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.SICKLEDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.SICKLEDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.SICKLEDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.SICKLEDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.05);
 					break;

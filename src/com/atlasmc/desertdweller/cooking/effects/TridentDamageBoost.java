@@ -12,7 +12,7 @@ public class TridentDamageBoost extends CustomEffect implements Listener{
 	public TridentDamageBoost(int duration, int tier, Player p) {
 		this.player = p;
 		this.duration = duration;
-		this.effect = CookingEffect.TRIDENTDAMAGEBOOST;
+		this.effect = CustomEffectType.TRIDENTDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "tridentDamageBoost";
@@ -32,7 +32,7 @@ public class TridentDamageBoost extends CustomEffect implements Listener{
 	public TridentDamageBoost(int tier, Player p) {
 		this.player = p;
 		this.duration = 30;
-		this.effect = CookingEffect.TRIDENTDAMAGEBOOST;
+		this.effect = CustomEffectType.TRIDENTDAMAGEBOOST;
 		this.type = EffectType.BUFF;
 		this.tier = tier;
 		this.name = "tridentDamageBoost";
@@ -57,8 +57,8 @@ public class TridentDamageBoost extends CustomEffect implements Listener{
 				return;
 			if(!p.getInventory().getItemInMainHand().getType().equals(Material.TRIDENT)) 
 				return;
-			if(EffectsHandler.getEffect(p, CookingEffect.TRIDENTDAMAGEBOOST) != null) {
-				switch(EffectsHandler.getEffect(p, CookingEffect.TRIDENTDAMAGEBOOST).tier){
+			if(EffectsHandler.getEffect(p, CustomEffectType.TRIDENTDAMAGEBOOST) != null) {
+				switch(EffectsHandler.getEffect(p, CustomEffectType.TRIDENTDAMAGEBOOST).tier){
 				case 1:
 					e.setDamage(e.getDamage()*1.05);
 					break;
