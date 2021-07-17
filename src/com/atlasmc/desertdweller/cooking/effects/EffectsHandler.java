@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import com.ags.atlasessentials.AtlasEssentials;
 import com.ags.atlasessentials.systems.playermenu.PlayerStatus;
+import com.atlasmc.desertdweller.cooking.Cooking;
 
 public class EffectsHandler {
 	private static HashMap<Player, ArrayList<CustomEffect>> effectedPlayers = new HashMap<Player, ArrayList<CustomEffect>>();
@@ -20,12 +20,12 @@ public class EffectsHandler {
 		for(CustomEffect curEffect : effectList){
 			if(curEffect.getEffect().equals(e.getEffect())) {
 				curEffect = e;
-				AtlasEssentials.instance().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
+				Cooking.atlasEssentials().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
 				return;
 			}
 		}
 		effectList.add(e);
-		AtlasEssentials.instance().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
+		Cooking.atlasEssentials().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
 	}
 	
 	public static void removeEffect(Player p, CustomEffectType e) {
@@ -40,7 +40,7 @@ public class EffectsHandler {
 			}
 		}
 		if(targetEffect != null)
-			AtlasEssentials.instance().updateStatusEffect(p, targetEffect.getEffect().toString(), new PlayerStatus(targetEffect.getName(), targetEffect.getDesc(), 0, targetEffect.getTier(), targetEffect.getIcon()));
+			Cooking.atlasEssentials().updateStatusEffect(p, targetEffect.getEffect().toString(), new PlayerStatus(targetEffect.getName(), targetEffect.getDesc(), 0, targetEffect.getTier(), targetEffect.getIcon()));
 			effectList.remove(targetEffect);
 	}
 	
@@ -66,7 +66,7 @@ public class EffectsHandler {
 				return;
 			for(CustomEffect e : effectedPlayers.get(p)) {
 				e.tickEffect();
-				AtlasEssentials.instance().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
+				Cooking.atlasEssentials().updateStatusEffect(p, e.getEffect().toString(), new PlayerStatus(e.getName(), e.getDesc(), e.getDuration(), e.getTier(), e.getIcon()));
 				if(e.duration != 0)
 					updatedList.add(e);
 			}
