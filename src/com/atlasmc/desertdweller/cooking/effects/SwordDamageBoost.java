@@ -76,5 +76,4 @@ public class SwordDamageBoost extends CustomEffect implements Listener{
 			}
 		}
 	}
-
 }
