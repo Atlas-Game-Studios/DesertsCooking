@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="D:/Programming/Atlas APIs/1.16 APIs/item-nbt-api-plugin-2.5.0.jar"/>
 	<classpathentry kind="lib" path="D:/Programming/Atlas APIs/1.16 APIs/spigot-1.16.1.jar"/>
+	<classpathentry kind="lib" path="D:/Programming/Atlas APIs/1.16 APIs/AtlasEssentials-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
