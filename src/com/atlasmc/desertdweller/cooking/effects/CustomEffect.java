@@ -1,8 +1,10 @@
 package com.atlasmc.desertdweller.cooking.effects;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 public class CustomEffect {
+	protected Player player;
 	protected int duration;
 	protected EffectType type;
 	protected CookingEffect effect;
@@ -53,5 +55,9 @@ public class CustomEffect {
 	
 	public Material getIcon() {
 		return icon;
+	}
+	
+	public Player getPlayer() {
+		return player;
 	}
 }
