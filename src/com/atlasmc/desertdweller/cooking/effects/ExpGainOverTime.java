@@ -30,29 +30,24 @@ public class ExpGainOverTime extends CustomEffect {
 	public void tickEffect() {
 		if(ticksPassed >= 20) {
 			duration -= 1;
+			secsPassed += 1;
 			switch(tier) {
 			case 1:
 				if(secsPassed >= 2) {
 					this.player.setExp(this.player.getExp() + 1);
 					secsPassed = 0;
-				}else {
-					secsPassed += 1;
 				}
 				break;
 			case 2:
 				if(secsPassed >= 3) {
 					this.player.setExp(this.player.getExp() + 2);
 					secsPassed = 0;
-				}else {
-					secsPassed += 1;
 				}
 				break;
 			case 3:
 				if(secsPassed >= 1) {
 					this.player.setExp(this.player.getExp() + 1);
 					secsPassed = 0;
-				}else {
-					secsPassed += 1;
 				}
 				break;
 			}
