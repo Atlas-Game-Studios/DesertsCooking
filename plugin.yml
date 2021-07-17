@@ -11,6 +11,9 @@ commands:
    foodstats:
       description: Gives you details on the food item you are holding.
       usage: /foodstats
+   customeffect:
+      description: Gives the player the custom effect..
+      usage: /customeffect <player> <effect> [duration]
 permissions:
    cooking.cuttingboard:
       description: Lets the player use the cutting board.
