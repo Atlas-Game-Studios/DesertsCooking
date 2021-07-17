@@ -322,6 +322,8 @@ public class StationUpdater extends BukkitRunnable{
 	
 	private void breakStation() {
 		Station station = Station.getActiveStation(location);
+		if(location.getBlock().getBlockData() instanceof Lightable)
+			((Lightable) location.getBlock().getBlockData()).setLit(false);
 		location.getWorld().dropItemNaturally(location, station.getCookingItem().getItemStack());
 		Station.removeStation(location);
 	}

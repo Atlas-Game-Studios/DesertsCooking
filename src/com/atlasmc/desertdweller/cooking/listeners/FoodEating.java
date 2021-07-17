@@ -24,21 +24,21 @@ public class FoodEating implements Listener{
 		NBTItem nbti = new NBTItem(eatenItem);
 		if(nbti.hasKey("Plugin") && nbti.getString("Plugin").equals("Cooking") && e.getPlayer().hasPermission("cooking.eat")) {
 			CustomFoodItem item = new CustomFoodItem(eatenItem);
-			if(item.completed) {
+			if(item.isCompleted()) {
 				e.setCancelled(true);
 				CustomFoodEatenEvent event = new CustomFoodEatenEvent(e.getItem(), e.getPlayer());
 				Bukkit.getServer().getPluginManager().callEvent(event);
 				if(event.isCancelled())
 					return;
-				float modifier = item.flavor.efficiency(Cooking.preferences.get(e.getPlayer().getUniqueId()));
-				e.getPlayer().setFoodLevel(e.getPlayer().getFoodLevel() + (int) (item.food * modifier));
-				e.getPlayer().setSaturation(e.getPlayer().getSaturation() + item.saturation * modifier);
-				if(item.poisoned) {
+				float modifier = item.getFlavor().efficiency(Cooking.preferences.get(e.getPlayer().getUniqueId()));
+				e.getPlayer().setFoodLevel(e.getPlayer().getFoodLevel() + (int) (item.getFood() * modifier));
+				e.getPlayer().setSaturation(e.getPlayer().getSaturation() + item.getSaturation() * modifier);
+				if(item.isPoisoned()) {
 					e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON,1200,4));
 				}
-				item.flavor.eatenPlayerMessage(e.getPlayer());
+				item.getFlavor().eatenPlayerMessage(e.getPlayer());
 				//Remove 1 from amount.
-				if(item.item.getAmount() <= 1) {
+				if(item.getItem().getAmount() <= 1) {
 					ItemStack newItem = new ItemStack(Material.AIR);
 					if(e.getPlayer().getInventory().getItemInMainHand().equals(eatenItem)) { 
 						e.getPlayer().getInventory().setItemInMainHand(newItem);
@@ -54,10 +54,10 @@ public class FoodEating implements Listener{
 						e.getPlayer().getInventory().setItemInOffHand(eatenItem);
 					}
 				}
-			}else if(!item.invalidItem) {
+			}else if(!item.isInvalidItem()) {
 				e.setCancelled(true);
-				e.getPlayer().sendMessage(ChatColor.RED + "That item is not completed! Put it into an oven, stove or cooking pot to finish it.");
-			}else if(item.invalidItem) {
+				e.getPlayer().sendMessage(ChatColor.RED + "That item is not completed! Put it into a cooking station to finish it.");
+			}else if(item.isInvalidItem()) {
 				e.setCancelled(true);
 				e.getPlayer().sendMessage(ChatColor.GOLD + "This item is invalid, please report this to an Admin.");
 			}

@@ -66,7 +66,7 @@ public class StationGUI implements Listener{
 				}
 			//Checks to see if it is the result slot.
 			}else if(e.getSlot() == 34) {
-				if(e.getCurrentItem() != air && e.getClickedInventory().getItem(10).getType().equals(Material.AIR)) { //If the result slot is not empty, and the main slot has something, activate the station.
+				if(e.getCurrentItem() != air && !e.getClickedInventory().getItem(10).getType().equals(Material.AIR)) { //If the result slot is not empty, and the main slot has something, activate the station.
 					resetIngredients((Player) e.getWhoClicked(), e.getClickedInventory());
 					
 					Station.startNewStation(gUILocations.get(e.getWhoClicked()), new Station(new CustomFoodItem(e.getCurrentItem()), System.currentTimeMillis()));
@@ -270,6 +270,8 @@ public class StationGUI implements Listener{
 					}else {
 						invalidMix = true;
 					}
+				}else {
+					invalidMix = true;
 				}
 			}else if(i == 2) {
 				if(inv.getItem(13) != null) {
@@ -343,6 +345,7 @@ public class StationGUI implements Listener{
 				}
 			}
 		}
+		
 		if(!invalidMix && !allAir) {
 			inv.setItem(34, mainItem.getItemStack());
 		}else {
