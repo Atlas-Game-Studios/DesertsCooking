@@ -9,8 +9,8 @@ import org.bukkit.scheduler.BukkitTask;
 
 import com.atlasmc.desertdweller.cooking.customfood.Flavor;
 import com.atlasmc.desertdweller.cooking.customfood.FlavorPreference;
-import com.atlasmc.desertdweller.cooking.customfood.IngredientStation;
 import com.atlasmc.desertdweller.cooking.customfood.Station;
+import com.atlasmc.desertdweller.cooking.customfood.StationGUI;
 import com.atlasmc.desertdweller.cooking.listeners.FoodCrafting;
 import com.atlasmc.desertdweller.cooking.listeners.FoodEating;
 
@@ -21,6 +21,8 @@ public class Cooking extends JavaPlugin implements Listener{
 	
 	@Override 
 	public void onEnable() {
+		saveDefaultConfig();
+		getConfig();
 		getCommand("tastes").setExecutor(new Commands());
 		getCommand("foodstats").setExecutor(new Commands());
 		saveDefaultConfig();
@@ -29,7 +31,7 @@ public class Cooking extends JavaPlugin implements Listener{
 		getServer().getPluginManager().registerEvents(new FoodCrafting(),this);
 		getServer().getPluginManager().registerEvents(new FoodEating(), this);
 		getServer().getPluginManager().registerEvents(new Flavor(), this); 
-		getServer().getPluginManager().registerEvents(new IngredientStation(), this); 
+		getServer().getPluginManager().registerEvents(new StationGUI(), this); 
 		getServer().getPluginManager().registerEvents(new Station(null, 0), this); 
 	}
 	

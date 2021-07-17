@@ -5,10 +5,7 @@ import java.util.HashMap;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -24,7 +21,7 @@ import com.atlasmc.desertdweller.cooking.Cooking;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class IngredientStation implements Listener{
+public class StationGUI implements Listener{
 	static ItemStack mainIngredientSlots;
 	static ItemStack secondaryIngredientSlots;
 	static ItemStack spiceSlots;
@@ -32,11 +29,10 @@ public class IngredientStation implements Listener{
 	static ItemStack finalSlot;
 	static ItemStack air = new ItemStack(Material.AIR);
 	private static Plugin plugin = Cooking.getPlugin(Cooking.class);
-	static HashMap<Inventory, Player> openCuttingBoards = new HashMap<Inventory, Player>();
-	public static HashMap<Player, Location> cuttingBoardLocations = new HashMap<Player, Location>();
+	static HashMap<Inventory, Player> openGUIs = new HashMap<Inventory, Player>();
 	
 	
-	public static void openIngredientStation(Location l, Player p) {
+	public static void openIngredientGUI(Location l, Player p) {
 		Inventory inv = plugin.getServer().createInventory(null, 45, "Cutting Board");
 		
 		setItemStacks();
@@ -48,15 +44,14 @@ public class IngredientStation implements Listener{
 		inv.setContents(contents);
 		
 		p.openInventory(inv);
-		openCuttingBoards.put(inv, p);
-		cuttingBoardLocations.put(p, l);
+		openGUIs.put(inv, p);
 	}
 	
 	@EventHandler
 	private void onPlayerInventoryInteract(InventoryClickEvent e) {
 		Inventory curInv = e.getClickedInventory();
 		// If the inventory clicked is a crafting inventory.
-		if(curInv != null && openCuttingBoards.containsKey(curInv)) {
+		if(curInv != null && openGUIs.containsKey(curInv)) {
 			// Checks if it is one of the crafting slots.
 			if(e.getSlot() == 10 || e.getSlot() == 13 || e.getSlot() == 14 || e.getSlot() ==  15 || e.getSlot() == 28 || e.getSlot() == 29 || e.getSlot() == 30 || e.getSlot() == 31) {
 				if(e.getCurrentItem() != null) {
@@ -77,11 +72,11 @@ public class IngredientStation implements Listener{
 					Player p = (Player) e.getWhoClicked();
 					p.playSound(p.getLocation(), Sound.UI_TOAST_OUT, 1, 2f);
 					
-					for(int i = 0; i <360; i+=10){
-						Location loc = cuttingBoardLocations.get(p).clone();
-						loc.add(0.5f + Math.cos(i)*0.7f, 1, 0.5f + Math.sin(i)*0.7f);
-						p.getWorld().spawnParticle(Particle.CRIMSON_SPORE, loc, 3, 0, 1, 0, 0.005f);
-					}
+//					for(int i = 0; i <360; i+=10){
+//						Location loc = cuttingBoardLocations.get(p).clone();
+//						loc.add(0.5f + Math.cos(i)*0.7f, 1, 0.5f + Math.sin(i)*0.7f);
+//						p.getWorld().spawnParticle(Particle.CRIMSON_SPORE, loc, 3, 0, 1, 0, 0.005f);
+//					}
 				}
 			}
 			e.setCancelled(true);
@@ -89,7 +84,7 @@ public class IngredientStation implements Listener{
 		// If the inventory clicked is a player inventory, and the player has cutting board open.
 		if(e.getClickedInventory() != null && e.getClickedInventory().equals(e.getWhoClicked().getInventory())) {
 			Inventory topInv = e.getWhoClicked().getOpenInventory().getTopInventory();
-			if(topInv != null && openCuttingBoards.containsKey(topInv) && e.getCurrentItem() != null) {
+			if(topInv != null && openGUIs.containsKey(topInv) && e.getCurrentItem() != null) {
 				CustomFoodItem foodItem = new CustomFoodItem(e.getCurrentItem());
 				//If the food item is not invalid, or already completed.
 				if(!foodItem.invalidItem && !foodItem.completed) {
@@ -258,14 +253,6 @@ public class IngredientStation implements Listener{
 		reservedSlot = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
 	}
 	
-	//Check for multiblock structure.
-	public static boolean isIngredientStation(Block b) {
-		if((b.getType().equals(Material.CRAFTING_TABLE) && b.getRelative(BlockFace.UP).getType().equals(Material.OAK_PRESSURE_PLATE)) || (b.getType().equals(Material.OAK_PRESSURE_PLATE) && b.getRelative(BlockFace.DOWN).getType().equals(Material.CRAFTING_TABLE))) {
-			return true;
-		}
-		return false;
-	}
-	
 	public Inventory updateResult(Inventory inv) {
 		boolean invalidMix = false;
 		boolean allAir = true;
@@ -374,9 +361,8 @@ public class IngredientStation implements Listener{
 	private void onInventoryClose(InventoryCloseEvent e) {
 		Inventory curInv = e.getInventory();
 		// If the inventory clicked is a crafting inventory.
-		if(openCuttingBoards.containsKey(curInv)) {
-			openCuttingBoards.remove(curInv);
-			cuttingBoardLocations.remove(e.getPlayer());
+		if(openGUIs.containsKey(curInv)) {
+			openGUIs.remove(curInv);
 			HumanEntity p = e.getPlayer();
 			if(curInv.getItem(10) != null)
 				p.getInventory().addItem(curInv.getItem(10));

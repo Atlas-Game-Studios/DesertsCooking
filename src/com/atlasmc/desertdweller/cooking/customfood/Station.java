@@ -30,7 +30,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class Station implements Listener {
 	private static Cooking plugin = Cooking.getPlugin(Cooking.class);
-	private static HashMap<Location, Station> activeStations;
+	private static HashMap<Location, Station> activeStations = new HashMap<Location, Station>();
 	
 	private CustomFoodItem cookingItem;
 	private long timeBegan;
@@ -58,7 +58,9 @@ public class Station implements Listener {
 	}
 	
 	public static void stationInteract(Block b, Player p) {
-		
+		if(!activeStations.keySet().contains(b.getLocation())) {
+			StationGUI.openIngredientGUI(b.getLocation(), p);
+		}
 	}
 	
 	public static void removeStation(Location l) {
@@ -134,22 +136,22 @@ public class Station implements Listener {
 			if(!b.getRelative(BlockFace.UP).getType().equals(Material.COBBLESTONE_WALL) || !b.getRelative(BlockFace.DOWN).getType().equals(Material.CAMPFIRE))
 				return null;
 			if(b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
-				Levelled cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.EAST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
 					return BlockFace.SOUTH;
 				}
 			}else if(b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
-				Levelled cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.SOUTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
 					return BlockFace.WEST;
 				}
 			}else if(b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
-				Levelled cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.WEST).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
 					return BlockFace.NORTH;
 				}
 			}else if(b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getType().equals(Material.CAULDRON)) {
-				Levelled cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+				Levelled cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 				if(cauldron.getLevel() == 0 && b.getRelative(BlockFace.NORTH).getType().equals(Material.TRIPWIRE_HOOK) && b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getType().equals(Material.BARREL)) {
 					return BlockFace.EAST;
 				}

@@ -1,9 +1,9 @@
 name: Cooking
 main: com.atlasmc.desertdweller.cooking.Cooking
-version: 1.5.0
+version: 1.6.0
 author: Desertdweller
 api-version: 1.16
-depend: [NBTAPI,EatingAPI]
+depend: [NBTAPI]
 commands:
    tastes:
       description: Shows you your preferred flavors in foods.

@@ -62,9 +62,9 @@ public class StationUpdater extends BukkitRunnable{
 				breakStation();
 				return;
 			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.EAST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
 			break;
 		case EAST:
@@ -72,9 +72,9 @@ public class StationUpdater extends BukkitRunnable{
 				breakStation();
 				return;
 			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.SOUTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
 			break;
 		case SOUTH:
@@ -82,9 +82,9 @@ public class StationUpdater extends BukkitRunnable{
 				breakStation();
 				return;
 			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.WEST).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
 			break;
 		case WEST:
@@ -92,9 +92,9 @@ public class StationUpdater extends BukkitRunnable{
 				breakStation();
 				return;
 			}
-			campfire = (Lightable) b.getRelative(BlockFace.DOWN);
+			campfire = (Lightable) b.getRelative(BlockFace.DOWN).getBlockData();
 			campfire.setLit(true);
-			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN);
+			cauldron = (Levelled) b.getRelative(BlockFace.NORTH).getRelative(BlockFace.DOWN).getBlockData();
 			cauldron.setLevel(1);
 			break;
 		default:

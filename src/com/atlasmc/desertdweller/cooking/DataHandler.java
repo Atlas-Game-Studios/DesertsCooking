@@ -56,6 +56,11 @@ public class DataHandler {
 			dataConfig.set(uuid.toString() + ".flavor1", preferences.get(uuid).getFlavor1());
 			dataConfig.set(uuid.toString() + ".flavor2", preferences.get(uuid).getFlavor2());
 		}
+
+		try {
+			dataConfig.save(dataFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
 }

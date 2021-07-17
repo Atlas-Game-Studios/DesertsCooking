@@ -21,7 +21,7 @@ public class FoodCrafting implements Listener {
 				return;
 			e.setCancelled(true);
 			
-			Station.stationInteract(e.getClickedBlock(), e.getPlayer());
+			Station.stationInteract(e.getClickedBlock(), p);
 		}
 	}
 }
