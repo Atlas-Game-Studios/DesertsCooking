@@ -25,6 +25,26 @@ public class ExpGainOverTime extends CustomEffect {
 			break;
 		}
 	}
+
+	public ExpGainOverTime(int tier, Player p) {
+		this.player = p;
+		this.duration = 60;
+		this.effect = CookingEffect.EXPGAINOVERTIME;
+		this.type = EffectType.BUFF;
+		this.tier = tier;
+		this.name = "expGainOverTime";
+		switch(tier){
+		case 1:
+			this.desc = "You gain 1 xp point per 2 seconds.";
+			break;
+		case 2:
+			this.desc = "You gain 2 xp points per 3 seconds.";
+			break;
+		case 3:
+			this.desc = "You gain 1 xp points per 1 second.";
+			break;
+		}
+	}
 	
 	@Override
 	public void tickEffect() {
